@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TVVC.swift
 //  MovieAppMVVM
 //
 //  Created by Ayush Gupta on 22/08/19.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TVVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.navigationItem.title = "TV"
     }
 
-
 }
-

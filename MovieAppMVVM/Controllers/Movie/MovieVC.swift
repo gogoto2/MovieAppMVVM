@@ -13,5 +13,6 @@ class MovieVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Movie"
     }
 }

@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let vc = TabBar()
         let navController = UINavigationController(rootViewController: vc)
+        navController.navigationBar.isHidden = false
         self.window?.rootViewController = navController
     }
     
