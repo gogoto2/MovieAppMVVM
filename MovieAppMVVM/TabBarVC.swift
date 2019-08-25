@@ -1,5 +1,5 @@
 //
-//  TabBar.swift
+//  TabBarVC.swift
 //  MovieAppMVVM
 //
 //  Created by Ayush Gupta on 22/08/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBar: UITabBarController {
+class TabBarVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +27,12 @@ class TabBar: UITabBarController {
         UITabBar.appearance().tintColor = UIColor.themeCherry
         UITabBar.appearance().barStyle = .black
         
-        // Create Tab one
-        let movieVC = MovieVC()
-        let movie = UITabBarItem(title: "Movie", image: #imageLiteral(resourceName: "MOVIE"), selectedImage: #imageLiteral(resourceName: "MOVIE"))
-        movieVC.tabBarItem = movie
-        
-        // Create Tab two
-        let tvVC = TVVC()
-        let tv = UITabBarItem(title: "TV", image: #imageLiteral(resourceName: "TV"), selectedImage: #imageLiteral(resourceName: "TV"))
-        tvVC.tabBarItem = tv
-        
-        self.viewControllers = [movieVC, tvVC]
+        self.viewControllers = [
+            createNavigationController(with: HomeVC(), title: "Home", image: #imageLiteral(resourceName: "home")),
+            createNavigationController(with: SearchVC(), title: "Search", image: #imageLiteral(resourceName: "search")),
+            createNavigationController(with: FavouriteVC(), title: "Favourite", image: #imageLiteral(resourceName: "favourite")),
+            createNavigationController(with: MoreVC(), title: "More", image: #imageLiteral(resourceName: "more"))
+        ]
         
         guard let items = tabBar.items else { return }
         
@@ -48,9 +43,19 @@ class TabBar: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: "9e9e9e")], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.themeCherry], for: .selected)
     }
+    
+    func createNavigationController(with viewController: UIViewController, title: String, image: UIImage?) -> UINavigationController {
+        let navgationController = UINavigationController(rootViewController: viewController)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        viewController.navigationItem.title = title
+        viewController.tabBarItem.title = title
+        viewController.tabBarItem.image = image
+        return navgationController
+    }
 }
 
-extension TabBar: UITabBarControllerDelegate {
+extension TabBarVC: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         

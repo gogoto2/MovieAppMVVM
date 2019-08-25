@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCVCellTypeOne" id="gTV-IL-0wX" customClass="MovieCVCellTypeOne" customModule="MovieAppMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="182" height="260"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="182" height="260"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXf-nE-aku">
+                        <rect key="frame" x="5" y="5" width="172" height="250"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cinema" translatesAutoresizingMaskIntoConstraints="NO" id="Yg8-8N-U4V">
+                                <rect key="frame" x="2" y="2" width="168" height="195"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="195" id="4HT-XC-hNv"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AQe-oq-PEz">
+                                <rect key="frame" x="8" y="227" width="34.5" height="15"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-RG-ZKG">
+                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="0tQ-Aj-T9M"/>
+                                            <constraint firstAttribute="width" secondItem="3Le-RG-ZKG" secondAttribute="height" multiplier="1:1" id="HCp-Ql-n0E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDw-xD-1HS">
+                                        <rect key="frame" x="18" y="0.0" width="16.5" height="15"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5I-dh-nHJ">
+                                <rect key="frame" x="8" y="205" width="156" height="16"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AQe-oq-PEz" firstAttribute="leading" secondItem="nXf-nE-aku" secondAttribute="leading" constant="8" id="5Me-jh-zsy"/>
+                            <constraint firstItem="F5I-dh-nHJ" firstAttribute="leading" secondItem="nXf-nE-aku" secondAttribute="leading" constant="8" id="Arh-Tu-09n"/>
+                            <constraint firstAttribute="trailing" secondItem="Yg8-8N-U4V" secondAttribute="trailing" constant="2" id="Ev8-qt-Kvm"/>
+                            <constraint firstItem="F5I-dh-nHJ" firstAttribute="top" secondItem="Yg8-8N-U4V" secondAttribute="bottom" constant="8" id="VMQ-0v-zDi"/>
+                            <constraint firstItem="Yg8-8N-U4V" firstAttribute="leading" secondItem="nXf-nE-aku" secondAttribute="leading" constant="2" id="WoI-TG-UBi"/>
+                            <constraint firstItem="Yg8-8N-U4V" firstAttribute="top" secondItem="nXf-nE-aku" secondAttribute="top" constant="2" id="gLp-gu-duj"/>
+                            <constraint firstAttribute="trailing" secondItem="F5I-dh-nHJ" secondAttribute="trailing" constant="8" id="qB7-a9-cZp"/>
+                            <constraint firstAttribute="bottom" secondItem="AQe-oq-PEz" secondAttribute="bottom" constant="8" id="tAf-Nx-ltB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nXf-nE-aku" secondAttribute="trailing" constant="5" id="DnN-Eq-pDd"/>
+                <constraint firstItem="nXf-nE-aku" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="OKy-og-Qgy"/>
+                <constraint firstItem="nXf-nE-aku" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Pxe-PI-vtz"/>
+                <constraint firstAttribute="bottom" secondItem="nXf-nE-aku" secondAttribute="bottom" constant="5" id="W1Q-bO-N0n"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="182" height="281"/>
+            <connections>
+                <outlet property="imgMovie" destination="Yg8-8N-U4V" id="XHx-Jb-WPg"/>
+                <outlet property="imgStarRating" destination="3Le-RG-ZKG" id="1C9-xS-c8k"/>
+                <outlet property="lblMovieName" destination="F5I-dh-nHJ" id="mSU-6f-beP"/>
+                <outlet property="lblRating" destination="hDw-xD-1HS" id="Zcf-9B-HHm"/>
+                <outlet property="mainView" destination="nXf-nE-aku" id="LRe-eT-dJJ"/>
+            </connections>
+            <point key="canvasLocation" x="63.768115942028992" y="55.580357142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cinema" width="1000" height="667"/>
+        <image name="star" width="24" height="24"/>
+    </resources>
+</document>

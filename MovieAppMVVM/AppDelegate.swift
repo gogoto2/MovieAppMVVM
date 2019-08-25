@@ -32,10 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setUpMainScreen() {
         
-        let vc = TabBar()
-        let navController = UINavigationController(rootViewController: vc)
-        navController.navigationBar.isHidden = false
-        self.window?.rootViewController = navController
+        let tabBarController = TabBarVC()
+//        let navController = UINavigationController(rootViewController: tabBarController)
+//        navController.navigationBar.prefersLargeTitles = true
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = tabBarController
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
