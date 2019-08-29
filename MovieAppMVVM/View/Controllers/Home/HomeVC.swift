@@ -42,7 +42,7 @@ class HomeVC: UIViewController {
         
         self.navigationItem.title = "Home"
         
-        self.viewMain.isHidden = true
+        //self.viewMain.isHidden = true
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(handleAdd))
         
         self.collectionViewUpcomingMovie.delegate = self
@@ -141,10 +141,13 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionViewUpcomingMovie {
             return self.arrUpcomingMovieList.count
+            //            return 10
         } else if collectionView == self.collectionViewTopRatedMovie {
             return self.arrTopRatedMovieList.count
+            //            return 10
         } else if collectionView == self.collectionViewPopularMovie {
             return self.arrPopularMovieList.count
+            //            return 10
         } else {
             return 0
         }

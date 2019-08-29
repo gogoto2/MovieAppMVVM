@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07AB0446231665EA00D54454 /* MovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB0444231665EA00D54454 /* MovieListVC.swift */; };
+		07AB0447231665EA00D54454 /* MovieListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB0445231665EA00D54454 /* MovieListVC.xib */; };
 		3361DA5C8EDE4016DE657CB7 /* Pods_MovieAppMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5EF0C678ACFD095AA4E955 /* Pods_MovieAppMVVM.framework */; };
 		4806B064230DD17D00B393F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4806B063230DD17D00B393F8 /* AppDelegate.swift */; };
 		4806B06B230DD17E00B393F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4806B06A230DD17E00B393F8 /* Assets.xcassets */; };
@@ -92,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07AB0444231665EA00D54454 /* MovieListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVC.swift; sourceTree = "<group>"; };
+		07AB0445231665EA00D54454 /* MovieListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListVC.xib; sourceTree = "<group>"; };
 		4806B060230DD17C00B393F8 /* MovieAppMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4806B063230DD17D00B393F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4806B06A230DD17E00B393F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,6 +203,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0717BA1A2317D49A0094CD8E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0C2640A5C6B88BC1CB595530 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,9 +266,9 @@
 				4806B06A230DD17E00B393F8 /* Assets.xcassets */,
 				4806B06C230DD17E00B393F8 /* LaunchScreen.storyboard */,
 				4806B06F230DD17E00B393F8 /* Info.plist */,
+				0717BA1A2317D49A0094CD8E /* ViewModel */,
 				4861A56B231313A5000E98D6 /* Model */,
 				483B88A6230F17DF00F1D993 /* View */,
-				4806B0F1230DDE4600B393F8 /* Controllers */,
 			);
 			path = MovieAppMVVM;
 			sourceTree = "<group>";
@@ -360,6 +371,7 @@
 		483B88A6230F17DF00F1D993 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4806B0F1230DDE4600B393F8 /* Controllers */,
 				483B88A5230F17C600F1D993 /* Cells */,
 			);
 			path = View;
@@ -370,6 +382,8 @@
 			children = (
 				4806B0E9230DD64000B393F8 /* HomeVC.swift */,
 				4806B0EA230DD64000B393F8 /* HomeVC.xib */,
+				07AB0444231665EA00D54454 /* MovieListVC.swift */,
+				07AB0445231665EA00D54454 /* MovieListVC.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -421,7 +435,7 @@
 				4806B05C230DD17C00B393F8 /* Sources */,
 				4806B05D230DD17C00B393F8 /* Frameworks */,
 				4806B05E230DD17C00B393F8 /* Resources */,
-				2662FE41A2A6D9E4BA1C63B6 /* [CP] Embed Pods Frameworks */,
+				7FF99D77231A6F7621C6F9E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -518,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07AB0447231665EA00D54454 /* MovieListVC.xib in Resources */,
 				4861A57123131DF6000E98D6 /* MovieCVCellTypeTwo.xib in Resources */,
 				483B88BC230F447100F1D993 /* FavouriteVC.xib in Resources */,
 				483B88B8230F441500F1D993 /* SearchVC.xib in Resources */,
@@ -568,17 +583,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2662FE41A2A6D9E4BA1C63B6 /* [CP] Embed Pods Frameworks */ = {
+		7FF99D77231A6F7621C6F9E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieAppMVVM/Pods-MovieAppMVVM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieAppMVVM/Pods-MovieAppMVVM-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieAppMVVM/Pods-MovieAppMVVM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -662,6 +690,7 @@
 				4806B0DA230DD43300B393F8 /* SHScrollView.swift in Sources */,
 				4806B0B3230DD38800B393F8 /* ImageTextField.swift in Sources */,
 				4806B0C0230DD38800B393F8 /* ValidationViewController.swift in Sources */,
+				07AB0446231665EA00D54454 /* MovieListVC.swift in Sources */,
 				4806B0B4230DD38800B393F8 /* RangeSlider.swift in Sources */,
 				4806B0C7230DD38800B393F8 /* UserDefaults+helpers.swift in Sources */,
 				4806B0DF230DD43300B393F8 /* UIView+AnimateUp.swift in Sources */,
