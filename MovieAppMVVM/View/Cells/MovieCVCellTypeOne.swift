@@ -17,7 +17,7 @@ class MovieCVCellTypeOne: UICollectionViewCell {
     @IBOutlet weak var imgStarRating: UIImageView!
     @IBOutlet weak var lblRating: UILabel!
     
-    func refreshData(movie: Result) {
+    func refreshData(movie: MovieResults) {
         
         self.lblMovieName.text = movie.title
         self.lblRating.text = String(movie.voteAverage)

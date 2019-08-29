@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListVC" customModule="MovieAppMVVM" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CastVC" customModule="MovieAppMVVM" customModuleProvider="target">
             <connections>
-                <outlet property="collectionViewMovie" destination="siQ-gO-RAA" id="tKs-5c-0Hm"/>
+                <outlet property="collectionViewCast" destination="lL7-Ru-Bmp" id="IjJ-di-UoQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,10 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="siQ-gO-RAA">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lL7-Ru-Bmp">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nfv-0v-kb5">
+                    <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XlC-Xh-Swb">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -32,12 +32,12 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="siQ-gO-RAA" secondAttribute="trailing" id="QGw-GY-Zv1"/>
-                <constraint firstItem="siQ-gO-RAA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XUM-3Z-DsT"/>
-                <constraint firstItem="siQ-gO-RAA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aFw-hK-jhm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="siQ-gO-RAA" secondAttribute="bottom" id="gJi-MD-ONj"/>
+                <constraint firstItem="lL7-Ru-Bmp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="feI-Hc-OM4"/>
+                <constraint firstItem="lL7-Ru-Bmp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="g5v-RP-B0X"/>
+                <constraint firstItem="lL7-Ru-Bmp" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="iEt-Tt-Bo7"/>
+                <constraint firstItem="lL7-Ru-Bmp" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sxh-Ul-ozc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

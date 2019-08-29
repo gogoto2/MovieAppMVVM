@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TrailerTVCell" rowHeight="185" id="KGk-i7-Jjw" customClass="TrailerTVCell" customModule="MovieAppMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="183.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rED-kF-bKq" customClass="CardView" customModule="AGMoviesApp" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="310" height="173.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverpic" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-Wi-wkz">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="0uG-g7-LNJ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="lOZ-OE-ISN">
+                                <rect key="frame" x="130" y="40" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lOZ-OE-ISN" secondAttribute="height" multiplier="1:1" id="GpG-qb-4LL"/>
+                                    <constraint firstAttribute="height" constant="50" id="z6c-jU-xt2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X90-pU-3Cw">
+                                <rect key="frame" x="275" y="137" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6X5-Gd-YdJ"/>
+                                    <constraint firstAttribute="width" secondItem="X90-pU-3Cw" secondAttribute="height" multiplier="1:1" id="asL-B5-bSh"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="tapShareBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MgE-7d-VGR"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="10K-4e-5HL">
+                                <rect key="frame" x="285" y="147" width="10" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="10K-4e-5HL" secondAttribute="height" multiplier="1:1" id="SPU-Vo-hYa"/>
+                                    <constraint firstAttribute="height" constant="10" id="cxd-ra-zwn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfX-zj-huH">
+                                <rect key="frame" x="5" y="130" width="260" height="43.5"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isz-zF-qbx">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="130"/>
+                                <connections>
+                                    <action selector="tapOpenOnYoutubeBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vD5-er-boW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Isz-zF-qbx" firstAttribute="leading" secondItem="rED-kF-bKq" secondAttribute="leading" id="2zC-uy-Oa9"/>
+                            <constraint firstItem="GfX-zj-huH" firstAttribute="top" secondItem="Isz-zF-qbx" secondAttribute="bottom" id="7Hf-2o-dru"/>
+                            <constraint firstItem="a9a-Wi-wkz" firstAttribute="leading" secondItem="rED-kF-bKq" secondAttribute="leading" id="7eH-cL-Fbj"/>
+                            <constraint firstItem="lOZ-OE-ISN" firstAttribute="centerX" secondItem="a9a-Wi-wkz" secondAttribute="centerX" id="Cog-hJ-T8D"/>
+                            <constraint firstAttribute="bottom" secondItem="GfX-zj-huH" secondAttribute="bottom" id="J1R-it-d2I"/>
+                            <constraint firstItem="10K-4e-5HL" firstAttribute="centerY" secondItem="X90-pU-3Cw" secondAttribute="centerY" id="J9v-A8-44L"/>
+                            <constraint firstItem="X90-pU-3Cw" firstAttribute="centerY" secondItem="GfX-zj-huH" secondAttribute="centerY" id="OP3-uD-H1X"/>
+                            <constraint firstAttribute="trailing" secondItem="Isz-zF-qbx" secondAttribute="trailing" id="P0U-2h-jTn"/>
+                            <constraint firstAttribute="trailing" secondItem="X90-pU-3Cw" secondAttribute="trailing" constant="5" id="TMa-Ch-cPu"/>
+                            <constraint firstItem="GfX-zj-huH" firstAttribute="leading" secondItem="rED-kF-bKq" secondAttribute="leading" constant="5" id="VFY-ft-Tz3"/>
+                            <constraint firstItem="a9a-Wi-wkz" firstAttribute="top" secondItem="rED-kF-bKq" secondAttribute="top" id="WBp-mE-uC1"/>
+                            <constraint firstItem="10K-4e-5HL" firstAttribute="centerX" secondItem="X90-pU-3Cw" secondAttribute="centerX" id="XaV-Wu-wVn"/>
+                            <constraint firstItem="GfX-zj-huH" firstAttribute="top" secondItem="a9a-Wi-wkz" secondAttribute="bottom" id="gYL-AL-5XH"/>
+                            <constraint firstItem="X90-pU-3Cw" firstAttribute="leading" secondItem="GfX-zj-huH" secondAttribute="trailing" constant="10" id="iQF-mN-srK"/>
+                            <constraint firstAttribute="trailing" secondItem="a9a-Wi-wkz" secondAttribute="trailing" id="kLW-eT-WbN"/>
+                            <constraint firstItem="Isz-zF-qbx" firstAttribute="top" secondItem="rED-kF-bKq" secondAttribute="top" id="zMs-3I-af6"/>
+                            <constraint firstItem="lOZ-OE-ISN" firstAttribute="centerY" secondItem="a9a-Wi-wkz" secondAttribute="centerY" id="zgm-kk-UHh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffSetWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffSetHeight">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="rED-kF-bKq" secondAttribute="bottom" constant="5" id="Kmp-kU-d0q"/>
+                    <constraint firstItem="rED-kF-bKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="aVr-oK-Mta"/>
+                    <constraint firstAttribute="trailing" secondItem="rED-kF-bKq" secondAttribute="trailing" constant="5" id="dIf-LC-i9a"/>
+                    <constraint firstItem="rED-kF-bKq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gHe-nY-5Ss"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnOpenOnYoutube" destination="Isz-zF-qbx" id="0zt-Uc-7C5"/>
+                <outlet property="btnShare" destination="X90-pU-3Cw" id="Cm0-0V-bab"/>
+                <outlet property="imgVideo" destination="a9a-Wi-wkz" id="19P-Ri-ssL"/>
+                <outlet property="imgYoutube" destination="lOZ-OE-ISN" id="ptL-CU-OOc"/>
+                <outlet property="lblVideoTitle" destination="GfX-zj-huH" id="8VH-yl-CE0"/>
+                <outlet property="viewCard" destination="rED-kF-bKq" id="7OW-Nf-8Nm"/>
+            </connections>
+            <point key="canvasLocation" x="139.13043478260872" y="169.75446428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="coverpic" width="850" height="315"/>
+        <image name="share" width="48" height="48"/>
+        <image name="youtube" width="256" height="256"/>
+    </resources>
+</document>

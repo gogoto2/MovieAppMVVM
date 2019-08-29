@@ -38,4 +38,86 @@ class APIManager: NSObject {
             }
         }
     }
+    
+    // Review...
+    class func getReviewList(params: [String: String], movieId: String, success: @escaping (_ reviewList: Review)->(), failure: @escaping (_ errorMessage: String)->()) {
+        
+        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews"
+        
+        Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
+            
+            print(response)
+            
+            guard response.error == nil else {
+                print("error calliing on \(url)")
+                return
+            }
+            
+            guard let data = response.data else {
+                print("there was an error with the data")
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(Review.self, from: data)
+                success(model)
+            } catch let jsonErr {
+                print("failed to decode, \(jsonErr)")
+            }
+        }
+    }
+    
+     class func getMovieCredits(params: [String: String], movieId: String, success: @escaping (_ credits: Credits)->(), failure: @escaping (_ errorMessage: String)->()) {
+        
+        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/credits"
+        
+        Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
+            
+            print(response)
+            
+            guard response.error == nil else {
+                print("error calliing on \(url)")
+                return
+            }
+            
+            guard let data = response.data else {
+                print("there was an error with the data")
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(Credits.self, from: data)
+                success(model)
+            } catch let jsonErr {
+                print("failed to decode, \(jsonErr)")
+            }
+        }
+    }
+    
+    class func getMovieVideos(params: [String: String], movieId: String, success: @escaping (_ videos: Trailer)->(), failure: @escaping (_ errorMessage: String)->()) {
+        
+        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/videos"
+        
+        Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
+            
+            print(response)
+            
+            guard response.error == nil else {
+                print("error calliing on \(url)")
+                return
+            }
+            
+            guard let data = response.data else {
+                print("there was an error with the data")
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(Trailer.self, from: data)
+                success(model)
+            } catch let jsonErr {
+                print("failed to decode, \(jsonErr)")
+            }
+        }
+    }
 }

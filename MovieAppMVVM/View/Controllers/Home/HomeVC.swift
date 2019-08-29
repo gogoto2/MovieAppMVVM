@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 import SVProgressHUD
 
 class HomeVC: UIViewController {
@@ -33,14 +32,15 @@ class HomeVC: UIViewController {
         }
     }
     
-    var arrUpcomingMovieList = [Result]()
-    var arrTopRatedMovieList = [Result]()
-    var arrPopularMovieList = [Result]()
+    var arrUpcomingMovieList = [MovieResults]()
+    var arrTopRatedMovieList = [MovieResults]()
+    var arrPopularMovieList = [MovieResults]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Home"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.viewMain.isHidden = true
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(handleAdd))
@@ -116,19 +116,21 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func tapOnMoreUpcomingBtn(_ sender: UIButton) {
-        
+        let vc = MovieListVC(nibName: "MovieListVC", bundle: nil)
+        vc.movieType = "upcoming"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapOnMoreTopRatedBtn(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func tapOnMoreNowPlayingBtn(_ sender: UIButton) {
-        
+        let vc = MovieListVC(nibName: "MovieListVC", bundle: nil)
+        vc.movieType = "top_rated"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapOnMorePopularBtn(_ sender: UIButton) {
-        
+        let vc = MovieListVC(nibName: "MovieListVC", bundle: nil)
+        vc.movieType = "popular"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -172,7 +174,15 @@ extension HomeVC: UICollectionViewDataSource {
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
+        if collectionView == self.collectionViewUpcomingMovie {
+            SharedInstance.sharedInstance.movieId = String(self.arrUpcomingMovieList[indexPath.item].id)
+        } else if collectionView == self.collectionViewTopRatedMovie {
+            SharedInstance.sharedInstance.movieId = String(self.arrTopRatedMovieList[indexPath.item].id)
+        } else if collectionView == self.collectionViewPopularMovie {
+            SharedInstance.sharedInstance.movieId = String(self.arrPopularMovieList[indexPath.item].id)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

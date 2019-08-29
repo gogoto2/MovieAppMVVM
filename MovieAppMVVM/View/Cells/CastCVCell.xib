@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CastCVCell" id="gTV-IL-0wX" customClass="CastCVCell" customModule="MovieAppMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="167" height="209"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="167" height="209"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOe-nQ-YaJ" customClass="CardView" customModule="AGMoviesApp" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="157" height="199"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-person" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-oO-i4F">
+                                <rect key="frame" x="0.0" y="0.0" width="157" height="156.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEd-pN-BkX">
+                                <rect key="frame" x="5" y="181.5" width="147" height="12.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12.5" id="5iS-wK-Pq1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origional Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOL-VU-yum">
+                                <rect key="frame" x="5" y="161.5" width="147" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="7zM-nu-WYg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LOL-VU-yum" secondAttribute="trailing" constant="5" id="0Jj-ST-Q3f"/>
+                            <constraint firstAttribute="bottom" secondItem="SEd-pN-BkX" secondAttribute="bottom" constant="5" id="4a5-11-nVv"/>
+                            <constraint firstAttribute="trailing" secondItem="SEd-pN-BkX" secondAttribute="trailing" constant="5" id="Alp-eY-iES"/>
+                            <constraint firstItem="LOL-VU-yum" firstAttribute="top" secondItem="IaW-oO-i4F" secondAttribute="bottom" constant="5" id="EZH-v5-NTT"/>
+                            <constraint firstItem="LOL-VU-yum" firstAttribute="leading" secondItem="QOe-nQ-YaJ" secondAttribute="leading" constant="5" id="Fxt-tq-KEK"/>
+                            <constraint firstItem="IaW-oO-i4F" firstAttribute="leading" secondItem="QOe-nQ-YaJ" secondAttribute="leading" id="a1L-Lg-Y7r"/>
+                            <constraint firstItem="SEd-pN-BkX" firstAttribute="top" secondItem="LOL-VU-yum" secondAttribute="bottom" constant="5" id="f5j-QX-OAd"/>
+                            <constraint firstAttribute="trailing" secondItem="IaW-oO-i4F" secondAttribute="trailing" id="fdj-wD-INH"/>
+                            <constraint firstItem="SEd-pN-BkX" firstAttribute="leading" secondItem="QOe-nQ-YaJ" secondAttribute="leading" constant="5" id="ogU-Mz-snC"/>
+                            <constraint firstItem="IaW-oO-i4F" firstAttribute="top" secondItem="QOe-nQ-YaJ" secondAttribute="top" id="xD3-pH-Wkn"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffSetWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffSetHeight">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="QOe-nQ-YaJ" secondAttribute="bottom" constant="5" id="H7r-Ov-5jl"/>
+                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Sgq-bK-8d6"/>
+                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="drJ-6B-jtk"/>
+                <constraint firstAttribute="trailing" secondItem="QOe-nQ-YaJ" secondAttribute="trailing" constant="5" id="teL-OD-P2a"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="167" height="209"/>
+            <connections>
+                <outlet property="imgCast" destination="IaW-oO-i4F" id="uwL-kf-h5J"/>
+                <outlet property="lblCastName" destination="SEd-pN-BkX" id="e85-H1-EBB"/>
+                <outlet property="lblCastOrigionalName" destination="LOL-VU-yum" id="T4T-Vv-gty"/>
+                <outlet property="viewCard" destination="QOe-nQ-YaJ" id="WM4-tA-1Vs"/>
+            </connections>
+            <point key="canvasLocation" x="222.46376811594206" y="206.58482142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="default-person" width="1285" height="1285"/>
+    </resources>
+</document>
