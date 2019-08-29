@@ -10,7 +10,8 @@ import Foundation
 
 struct Result: Codable {
     
-    let voteCount, id: Int
+    let voteCount: Int
+    let id: Int
     let video: Bool
     let voteAverage: Double
     let title: String
@@ -19,12 +20,13 @@ struct Result: Codable {
     let originalLanguage: String
     let originalTitle: String
     let genreIDS: [Int]
-    let backdropPath: String
+    let backdropPath: String?
     let adult: Bool
     let overview: String
     let releaseDate: String
     
     enum CodingKeys: String, CodingKey {
+        
         case voteCount = "vote_count"
         case id
         case video

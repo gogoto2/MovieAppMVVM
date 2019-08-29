@@ -18,6 +18,8 @@ class APIManager: NSObject {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
+            print(response)
+            
             guard response.error == nil else {
                 print("error calliing on \(url)")
                 return
