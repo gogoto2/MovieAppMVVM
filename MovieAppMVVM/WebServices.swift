@@ -14,7 +14,7 @@ class APIManager: NSObject {
     // Movie... (Popular, Top_Rated, Upcoming)
     class func getMovieList(params: [String: String], movieType: String, success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
         
-        let url = "https://api.themoviedb.org/3/movie/" + movieType
+        let url = GlobalConstants.baseUrl + movieType
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -39,10 +39,38 @@ class APIManager: NSObject {
         }
     }
     
+    // Movie Details...
+    class func getMovieDetails(params: [String: String], movieId: String, success: @escaping (_ movieDetails: MovieDetails)->(), failure: @escaping (_ errorMessage: String)->()) {
+        
+        let url = GlobalConstants.baseUrl + movieId
+        
+        Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
+            
+            print(response)
+            
+            guard response.error == nil else {
+                print("error calliing on \(url)")
+                return
+            }
+            
+            guard let data = response.data else {
+                print("there was an error with the data")
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(MovieDetails.self, from: data)
+                success(model)
+            } catch let jsonErr {
+                print("failed to decode, \(jsonErr)")
+            }
+        }
+    }
+    
     // Review...
     class func getReviewList(params: [String: String], movieId: String, success: @escaping (_ reviewList: Review)->(), failure: @escaping (_ errorMessage: String)->()) {
         
-        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews"
+        let url = GlobalConstants.baseUrl + movieId + "/reviews"
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -67,9 +95,10 @@ class APIManager: NSObject {
         }
     }
     
-     class func getMovieCredits(params: [String: String], movieId: String, success: @escaping (_ credits: Credits)->(), failure: @escaping (_ errorMessage: String)->()) {
+    // Cast...
+    class func getMovieCredits(params: [String: String], movieId: String, success: @escaping (_ credits: Credits)->(), failure: @escaping (_ errorMessage: String)->()) {
         
-        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/credits"
+        let url = GlobalConstants.baseUrl + movieId + "/credits"
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -94,9 +123,10 @@ class APIManager: NSObject {
         }
     }
     
+    // Trailers...
     class func getMovieVideos(params: [String: String], movieId: String, success: @escaping (_ videos: Trailer)->(), failure: @escaping (_ errorMessage: String)->()) {
         
-        let url = "https://api.themoviedb.org/3/movie/" + movieId + "/videos"
+        let url = GlobalConstants.baseUrl + movieId + "/videos"
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -114,6 +144,34 @@ class APIManager: NSObject {
             
             do {
                 let model = try JSONDecoder().decode(Trailer.self, from: data)
+                success(model)
+            } catch let jsonErr {
+                print("failed to decode, \(jsonErr)")
+            }
+        }
+    }
+    
+    // Search...
+    class func getSearchedMovieList(params: [String: String], success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
+        
+        let url = GlobalConstants.baseUrlForSearch
+        
+        Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
+            
+            print(response)
+            
+            guard response.error == nil else {
+                print("error calliing on \(url)")
+                return
+            }
+            
+            guard let data = response.data else {
+                print("there was an error with the data")
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(Movie.self, from: data)
                 success(model)
             } catch let jsonErr {
                 print("failed to decode, \(jsonErr)")

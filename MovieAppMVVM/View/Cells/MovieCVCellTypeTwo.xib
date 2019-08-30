@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0a7-OE-uYA">
-                                <rect key="frame" x="283.5" y="111" width="34.5" height="15"/>
+                                <rect key="frame" x="130" y="111" width="34.5" height="15"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-Kg-cOx">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -46,14 +46,20 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hf-GC-tHt">
-                                <rect key="frame" x="130" y="10" width="188" height="16"/>
-                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hf-GC-tHt">
+                                <rect key="frame" x="130" y="10" width="188" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcD-wj-81K">
-                                <rect key="frame" x="130" y="112.5" width="24" height="12.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcD-wj-81K">
+                                <rect key="frame" x="130" y="33.5" width="188" height="15"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                                <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jH4-NA-665">
+                                <rect key="frame" x="294" y="112.5" width="24" height="12.5"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -63,14 +69,17 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8xK-bo-awz" secondAttribute="bottom" constant="2" id="3Nf-lw-2mx"/>
                             <constraint firstItem="lcD-wj-81K" firstAttribute="leading" secondItem="8xK-bo-awz" secondAttribute="trailing" constant="8" id="9qg-LI-nRz"/>
-                            <constraint firstItem="lcD-wj-81K" firstAttribute="centerY" secondItem="0a7-OE-uYA" secondAttribute="centerY" id="IgF-vl-BLg"/>
+                            <constraint firstItem="jH4-NA-665" firstAttribute="centerY" secondItem="0a7-OE-uYA" secondAttribute="centerY" id="IbK-Dw-xPG"/>
                             <constraint firstItem="4Hf-GC-tHt" firstAttribute="leading" secondItem="8xK-bo-awz" secondAttribute="trailing" constant="8" id="Yb1-Oq-2rt"/>
                             <constraint firstAttribute="bottom" secondItem="0a7-OE-uYA" secondAttribute="bottom" constant="10" id="Zf0-1K-K5F"/>
                             <constraint firstItem="8xK-bo-awz" firstAttribute="top" secondItem="teD-Lp-42P" secondAttribute="top" constant="2" id="afn-A1-NgO"/>
+                            <constraint firstItem="0a7-OE-uYA" firstAttribute="leading" secondItem="8xK-bo-awz" secondAttribute="trailing" constant="8" id="dwH-P6-UUR"/>
                             <constraint firstAttribute="trailing" secondItem="4Hf-GC-tHt" secondAttribute="trailing" constant="8" id="nhB-m8-HTf"/>
+                            <constraint firstItem="lcD-wj-81K" firstAttribute="top" secondItem="4Hf-GC-tHt" secondAttribute="bottom" constant="5" id="qiy-XT-qKz"/>
+                            <constraint firstAttribute="trailing" secondItem="lcD-wj-81K" secondAttribute="trailing" constant="8" id="sYK-Sa-atT"/>
                             <constraint firstItem="8xK-bo-awz" firstAttribute="leading" secondItem="teD-Lp-42P" secondAttribute="leading" constant="2" id="vqM-eD-mlD"/>
                             <constraint firstItem="4Hf-GC-tHt" firstAttribute="top" secondItem="teD-Lp-42P" secondAttribute="top" constant="10" id="vxL-bP-4D4"/>
-                            <constraint firstAttribute="trailing" secondItem="0a7-OE-uYA" secondAttribute="trailing" constant="8" id="yV5-e7-ek1"/>
+                            <constraint firstAttribute="trailing" secondItem="jH4-NA-665" secondAttribute="trailing" constant="8" id="yae-eO-CRU"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -88,8 +97,9 @@
                 <outlet property="imgMovie" destination="8xK-bo-awz" id="mU1-3e-rAC"/>
                 <outlet property="imgStarRating" destination="pnh-Kg-cOx" id="KoS-Jm-8aJ"/>
                 <outlet property="lblMovieName" destination="4Hf-GC-tHt" id="dT5-5Q-YY1"/>
+                <outlet property="lblOverview" destination="lcD-wj-81K" id="oqP-qP-bh5"/>
                 <outlet property="lblRating" destination="nua-kF-Gog" id="PTF-FV-4If"/>
-                <outlet property="lblReleaseDate" destination="lcD-wj-81K" id="irs-hG-8tQ"/>
+                <outlet property="lblReleaseDate" destination="jH4-NA-665" id="5kb-fN-BTM"/>
                 <outlet property="mainView" destination="teD-Lp-42P" id="ULk-es-v2K"/>
             </connections>
             <point key="canvasLocation" x="105.79710144927537" y="77.34375"/>

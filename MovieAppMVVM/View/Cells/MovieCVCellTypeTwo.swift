@@ -9,10 +9,11 @@
 import UIKit
 
 class MovieCVCellTypeTwo: UICollectionViewCell {
-
+    
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var lblMovieName: UILabel!
+    @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var imgStarRating: UIImageView!
     @IBOutlet weak var lblRating: UILabel!
@@ -21,11 +22,21 @@ class MovieCVCellTypeTwo: UICollectionViewCell {
         
         self.lblMovieName.text = movie.title
         self.lblRating.text = String(movie.voteAverage)
-        self.lblReleaseDate.text = dateFormatChange(yourdate: movie.releaseDate, currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
-        let imgURL = GlobalConstants.poster_image_path + movie.posterPath
-        self.imgMovie.sd_setShowActivityIndicatorView(true)
-        self.imgMovie.sd_setIndicatorStyle(.gray)
-        self.imgMovie.sd_setImage(with: URL(string: imgURL), placeholderImage: #imageLiteral(resourceName: "cinema"), options:.refreshCached)
+        if movie.releaseDate != "" {
+            self.lblReleaseDate.text = dateFormatChange(yourdate: movie.releaseDate, currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
+        } else {
+            self.lblReleaseDate.text = "-"
+        }
+        self.lblOverview.text = movie.overview
+        
+        if movie.posterPath != nil {
+            let imgURL = GlobalConstants.poster_image_path + movie.posterPath!
+            self.imgMovie.sd_setShowActivityIndicatorView(true)
+            self.imgMovie.sd_setIndicatorStyle(.gray)
+            self.imgMovie.sd_setImage(with: URL(string: imgURL), placeholderImage: #imageLiteral(resourceName: "cinema"), options:.refreshCached)
+        } else {
+            self.imgMovie.image = #imageLiteral(resourceName: "cinema")
+        }
     }
     
     override func layoutSubviews() {

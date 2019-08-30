@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVC" customModule="MovieAppMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="collectionViewSearch" destination="TMK-m6-9CI" id="XBA-7P-jIm"/>
+                <outlet property="searchBar" destination="GtD-Db-bRO" id="gEn-he-0qP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +21,40 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TMK-m6-9CI">
+                    <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                    <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="goi-A5-w73">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <searchBar contentMode="redraw" placeholder="Search Movie" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtD-Db-bRO">
+                    <rect key="frame" x="0.0" y="54" width="414" height="50"/>
+                    <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FHr-ED-Xzd"/>
+                    </constraints>
+                    <color key="tintColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                </searchBar>
+            </subviews>
             <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TMK-m6-9CI" secondAttribute="trailing" id="28t-gG-gdL"/>
+                <constraint firstItem="TMK-m6-9CI" firstAttribute="top" secondItem="GtD-Db-bRO" secondAttribute="bottom" id="29t-6y-Ofh"/>
+                <constraint firstItem="GtD-Db-bRO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="6Zg-BJ-ggr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TMK-m6-9CI" secondAttribute="bottom" id="CkL-qv-oHg"/>
+                <constraint firstItem="GtD-Db-bRO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Sc4-D2-IPO"/>
+                <constraint firstItem="TMK-m6-9CI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qk1-VX-wfl"/>
+                <constraint firstItem="GtD-Db-bRO" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wCb-RY-eWx"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </view>
     </objects>
 </document>

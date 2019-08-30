@@ -26,9 +26,6 @@ class ReviewsVC: UIViewController {
         self.tableViewReview.delegate = self
         self.tableViewReview.dataSource = self
         
-        self.tableViewReview.estimatedRowHeight = 200
-        self.tableViewReview.rowHeight = UITableView.automaticDimension
-        
         self.setDataForReview()
     }
     
@@ -69,6 +66,10 @@ extension ReviewsVC: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         //CellAnimator.animate(cell, withDuration: 0.5, animation: .Tilt)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

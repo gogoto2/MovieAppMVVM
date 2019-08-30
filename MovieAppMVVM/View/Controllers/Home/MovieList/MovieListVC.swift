@@ -25,7 +25,8 @@ class MovieListVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = self.movieType(value: self.movieType)
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         self.collectionViewMovie.delegate = self
         self.collectionViewMovie.dataSource = self
         
@@ -93,8 +94,9 @@ extension MovieListVC: UICollectionViewDataSource {
 extension MovieListVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let vc = MovieDetailsVC(nibName: "MovieDetailsVC", bundle: nil)
-        //        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
+        SharedInstance.sharedInstance.movieId = String(self.arrMovieList[indexPath.item].id)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -22,7 +22,7 @@ class MovieCVCellTypeOne: UICollectionViewCell {
         self.lblMovieName.text = movie.title
         self.lblRating.text = String(movie.voteAverage)
         
-        let imgURL = GlobalConstants.poster_image_path + movie.posterPath
+        let imgURL = GlobalConstants.poster_image_path + movie.posterPath!
         self.imgMovie.sd_setShowActivityIndicatorView(true)
         self.imgMovie.sd_setIndicatorStyle(.gray)
         self.imgMovie.sd_setImage(with: URL(string: imgURL), placeholderImage: #imageLiteral(resourceName: "cinema"), options:.refreshCached)

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleAndValueTVCell" rowHeight="50" id="KGk-i7-Jjw" customClass="TitleAndValueTVCell" customModule="MovieAppMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1p-1A-goK">
+                        <rect key="frame" x="10" y="0.0" width="26" height="39.5"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-ys-43a">
+                        <rect key="frame" x="275" y="0.0" width="35" height="39.5"/>
+                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="eke-SX-WfP">
+                        <rect key="frame" x="255" y="12.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="5Wk-hP-ZoB"/>
+                            <constraint firstAttribute="width" constant="15" id="bGB-ZY-o0a"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="x1p-1A-goK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D8T-mN-wm8"/>
+                    <constraint firstAttribute="bottom" secondItem="x1p-1A-goK" secondAttribute="bottom" id="Dqb-z9-eSs"/>
+                    <constraint firstItem="gz1-ys-43a" firstAttribute="leading" secondItem="eke-SX-WfP" secondAttribute="trailing" constant="5" id="FxR-0C-GJU"/>
+                    <constraint firstAttribute="bottom" secondItem="gz1-ys-43a" secondAttribute="bottom" id="WeA-4x-Bkp"/>
+                    <constraint firstItem="gz1-ys-43a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZzN-IO-4jL"/>
+                    <constraint firstAttribute="trailing" secondItem="gz1-ys-43a" secondAttribute="trailing" constant="10" id="lEE-30-mul"/>
+                    <constraint firstItem="eke-SX-WfP" firstAttribute="centerY" secondItem="gz1-ys-43a" secondAttribute="centerY" id="nca-I9-VtS"/>
+                    <constraint firstItem="x1p-1A-goK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vzS-6Q-dKI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgStar" destination="eke-SX-WfP" id="bzi-nk-ZLZ"/>
+                <outlet property="lblTitle" destination="x1p-1A-goK" id="c5j-ZJ-3dg"/>
+                <outlet property="lblValue" destination="gz1-ys-43a" id="Iaj-md-irO"/>
+            </connections>
+            <point key="canvasLocation" x="50.724637681159422" y="36.830357142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="star" width="24" height="24"/>
+    </resources>
+</document>
