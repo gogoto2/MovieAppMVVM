@@ -19,24 +19,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="183.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rED-kF-bKq" customClass="CardView" customModule="AGMoviesApp" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="310" height="173.5"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rED-kF-bKq" customClass="CardView" customModule="MovieAppMVVM" customModuleProvider="target">
+                        <rect key="frame" x="10" y="5" width="300" height="173.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverpic" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-Wi-wkz">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="130"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="0uG-g7-LNJ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="lOZ-OE-ISN">
-                                <rect key="frame" x="130" y="40" width="50" height="50"/>
+                                <rect key="frame" x="125" y="40" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lOZ-OE-ISN" secondAttribute="height" multiplier="1:1" id="GpG-qb-4LL"/>
                                     <constraint firstAttribute="height" constant="50" id="z6c-jU-xt2"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X90-pU-3Cw">
-                                <rect key="frame" x="275" y="137" width="30" height="30"/>
+                                <rect key="frame" x="265" y="137" width="30" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6X5-Gd-YdJ"/>
@@ -47,20 +47,20 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="10K-4e-5HL">
-                                <rect key="frame" x="285" y="147" width="10" height="10"/>
+                                <rect key="frame" x="275" y="147" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="10K-4e-5HL" secondAttribute="height" multiplier="1:1" id="SPU-Vo-hYa"/>
                                     <constraint firstAttribute="height" constant="10" id="cxd-ra-zwn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfX-zj-huH">
-                                <rect key="frame" x="5" y="130" width="260" height="43.5"/>
+                                <rect key="frame" x="5" y="130" width="250" height="43.5"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isz-zF-qbx">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="130"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
                                 <connections>
                                     <action selector="tapOpenOnYoutubeBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vD5-er-boW"/>
                                 </connections>
@@ -107,8 +107,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="rED-kF-bKq" secondAttribute="bottom" constant="5" id="Kmp-kU-d0q"/>
-                    <constraint firstItem="rED-kF-bKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="aVr-oK-Mta"/>
-                    <constraint firstAttribute="trailing" secondItem="rED-kF-bKq" secondAttribute="trailing" constant="5" id="dIf-LC-i9a"/>
+                    <constraint firstItem="rED-kF-bKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aVr-oK-Mta"/>
+                    <constraint firstAttribute="trailing" secondItem="rED-kF-bKq" secondAttribute="trailing" constant="10" id="dIf-LC-i9a"/>
                     <constraint firstItem="rED-kF-bKq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gHe-nY-5Ss"/>
                 </constraints>
             </tableViewCellContentView>

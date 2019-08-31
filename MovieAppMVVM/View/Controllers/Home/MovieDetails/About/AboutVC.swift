@@ -14,22 +14,18 @@ class AboutVC: UIViewController {
     
     @IBOutlet weak var tableViewAbout: UITableView! {
         didSet {
-            
             tableViewAbout.register(UINib(nibName: "ImageTVCell", bundle: nil), forCellReuseIdentifier: "ImageTVCell")
-            
             tableViewAbout.register(UINib(nibName: "MovieNameTVCell", bundle: nil), forCellReuseIdentifier: "MovieNameTVCell")
-            
             tableViewAbout.register(UINib(nibName: "TitleAndValueTVCell", bundle: nil), forCellReuseIdentifier: "TitleAndValueTVCell")
-            
             tableViewAbout.register(UINib(nibName: "OverviewTVCell", bundle: nil), forCellReuseIdentifier: "OverviewTVCell")
-            
             tableViewAbout.register(UINib(nibName: "CollectionViewInsideTableViewCell", bundle: nil), forCellReuseIdentifier: "CollectionViewInsideTableViewCell")
+            tableViewAbout.register(UINib(nibName: "TitleAndButtonTVCell", bundle: nil), forCellReuseIdentifier: "TitleAndButtonTVCell")
         }
     }
     
     var movieDetails: MovieDetails?
     
-    var arrUpcomingMovieList = [MovieResults]()
+    var arrCast = [CastResults]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +36,6 @@ class AboutVC: UIViewController {
         self.tableViewAbout.isHidden = true
         
         self.setDataForMovieDetails()
-        self.setDataForUpcomingMovies(movieType: "upcoming")
     }
     
     func setDataForMovieDetails() {
@@ -52,25 +47,24 @@ class AboutVC: UIViewController {
         APIManager.getMovieDetails(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (movieDetails) in
             SVProgressHUD.dismiss()
             self.movieDetails = movieDetails
-            self.tableViewAbout.reloadData()
-            self.tableViewAbout.isHidden = false
+            self.setDataForMovieCredits()
         }) { (errMsg) in
             print(errMsg)
         }
     }
     
-    func setDataForUpcomingMovies(movieType: String) {
-        
+    func setDataForMovieCredits() {
         let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": "1"
+            "api_key": GlobalConstants.apiKey
         ]
         
         SVProgressHUD.show()
-        APIManager.getMovieList(params: param, movieType: movieType, success: { (movie) in
-            self.arrUpcomingMovieList.removeAll()
-            self.arrUpcomingMovieList.append(contentsOf: movie.results)
+        APIManager.getMovieCredits(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (credit) in
+            SVProgressHUD.dismiss()
+            self.arrCast.removeAll()
+            self.arrCast.append(contentsOf: credit.cast)
+            self.tableViewAbout.reloadData()
+            self.tableViewAbout.isHidden = false
         }) { (errMsg) in
             print(errMsg)
         }
@@ -80,7 +74,7 @@ class AboutVC: UIViewController {
 extension AboutVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,6 +89,8 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
         } else if section == 4 {
             return 1
         } else if section == 5 {
+            return 1
+        } else if section == 6 {
             return 1
         } else {
             return 0
@@ -134,6 +130,11 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
                 cell.refreshData(movieDetails: self.movieDetails!)
                 return cell
             } else if indexPath.section == 5 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndButtonTVCell", for: indexPath) as! TitleAndButtonTVCell
+                cell.refreshData()
+                cell.delegate = self
+                return cell
+            } else if indexPath.section == 6 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionViewInsideTableViewCell", for: indexPath) as! CollectionViewInsideTableViewCell
                 cell.collectionView.delegate = self
                 cell.collectionView.dataSource = self
@@ -152,22 +153,24 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            return 200
+            return 220
         case 1:
             return UITableView.automaticDimension
         case 2:
             if indexPath.row == 0 {
-                return 30
+                return 40
             } else if indexPath.row == 1 {
-                return 30
+                return 40
             } else {
                 return 0
             }
         case 3:
-            return 50
+            return 60
         case 4:
             return UITableView.automaticDimension
         case 5:
+            return 30
+        case 6:
             return 230
         default:
             return 0
@@ -190,7 +193,7 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         if collectionView.tag == 1 {
             return (self.movieDetails?.genres.count)!
         } else {
-            return self.arrUpcomingMovieList.count
+            return self.arrCast.count
         }
     }
     
@@ -205,11 +208,11 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             return cell
             
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCVCellTypeOne", for: indexPath) as? MovieCVCellTypeOne else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCVCell", for: indexPath) as? CastCVCell else {
                 print("------- Cell cannot be created")
                 return UICollectionViewCell()
             }
-            cell.refreshData(movie: self.arrUpcomingMovieList[indexPath.item])
+            cell.refreshData(credits: self.arrCast[indexPath.item])
             return cell
         }
     }
@@ -226,8 +229,19 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             return CGSize(width: size.width, height: 30)
             
         } else {
-            return CGSize(width: 150.0, height: 200.0)
+            return CGSize(width: 130.0, height: 200.0)
         }
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        CellAnimatorForCV.animate(cell, withDuration: 0.5, animation: .Tilt)
+    }
+}
+
+extension AboutVC: TitleAndButtonTVCellDelegate {
+    
+    func tapOnButton(_ sender: TitleAndButtonTVCell) {
+        
     }
 }
 

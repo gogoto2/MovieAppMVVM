@@ -31,17 +31,21 @@ class MovieDetailVC: ButtonBarPagerTabStripViewController {
         
         self.navigationItem.title = "Movie Details"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite"), style: .plain, target: self, action: #selector(handleFavourite))
         
         super.viewDidLoad()
+    }
+    
+    @objc func handleFavourite() {
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let aboutVC = AboutVC(nibName: "AboutVC", bundle: nil)
-        let castVC = CastVC(nibName: "CastVC", bundle: nil)
         let reviewsVC = ReviewsVC(nibName: "ReviewsVC", bundle: nil)
         let trailersVC = TrailersVC(nibName: "TrailersVC", bundle: nil)
         
-        return [aboutVC, castVC, reviewsVC, trailersVC]
+        return [aboutVC, reviewsVC, trailersVC]
     }
 }

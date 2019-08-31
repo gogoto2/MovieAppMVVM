@@ -13,7 +13,7 @@ class CollectionViewInsideTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(UINib(nibName: "GenreCVCell", bundle: nil), forCellWithReuseIdentifier: "GenreCVCell")
-            collectionView.register(UINib(nibName: "MovieCVCellTypeOne", bundle: nil), forCellWithReuseIdentifier: "MovieCVCellTypeOne")
+            collectionView.register(UINib(nibName: "CastCVCell", bundle: nil), forCellWithReuseIdentifier: "CastCVCell")
         }
     }
     

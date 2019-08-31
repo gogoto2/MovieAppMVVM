@@ -17,7 +17,7 @@ class TitleAndValueTVCell: UITableViewCell {
     func refreshDataForDate(movieDetails: MovieDetails) {
         
         self.imgStar.isHidden = true
-        self.lblTitle.text = "Release Date:"
+        self.lblTitle.text = "Release Date"
         
         if movieDetails.releaseDate != "" {
             self.lblValue.text = dateFormatChange(yourdate: movieDetails.releaseDate, currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
@@ -28,7 +28,7 @@ class TitleAndValueTVCell: UITableViewCell {
     
     func refreshDataForRating(movieDetails: MovieDetails) {
         
-        self.lblTitle.text = "Ratings:"
+        self.lblTitle.text = "Ratings"
         self.lblValue.text = String(movieDetails.voteAverage)
     }
 }

@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-sf-UpP">
-                        <rect key="frame" x="7.5" y="0.0" width="312.5" height="82.5"/>
+                        <rect key="frame" x="17.5" y="0.0" width="297.5" height="82.5"/>
                         <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XB8-e8-qZN">
                             <size key="itemSize" width="50" height="50"/>
@@ -33,9 +33,9 @@
                 <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="BOL-sf-UpP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HCa-7G-yTc"/>
-                    <constraint firstItem="BOL-sf-UpP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7.5" id="QaQ-dM-ExI"/>
+                    <constraint firstItem="BOL-sf-UpP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17.5" id="QaQ-dM-ExI"/>
                     <constraint firstAttribute="bottom" secondItem="BOL-sf-UpP" secondAttribute="bottom" id="aZq-Ns-e7S"/>
-                    <constraint firstAttribute="trailing" secondItem="BOL-sf-UpP" secondAttribute="trailing" id="lt6-Ir-XQR"/>
+                    <constraint firstAttribute="trailing" secondItem="BOL-sf-UpP" secondAttribute="trailing" constant="5" id="lt6-Ir-XQR"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

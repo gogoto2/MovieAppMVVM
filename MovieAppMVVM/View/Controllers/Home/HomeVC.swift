@@ -64,9 +64,9 @@ class HomeVC: UIViewController {
             "language": "en-US",
             "page": "1"
         ]
-        
+        let url = GlobalConstants.baseUrl + movieType
         SVProgressHUD.show()
-        APIManager.getMovieList(params: param, movieType: movieType, success: { (movie) in
+        APIManager.getMovieList(params: param, url: url, success: { (movie) in
             self.arrUpcomingMovieList.removeAll()
             self.arrUpcomingMovieList.append(contentsOf: movie.results)
             self.collectionViewUpcomingMovie.reloadData()
@@ -85,7 +85,8 @@ class HomeVC: UIViewController {
             "language": "en-US",
             "page": "1"
         ]
-        APIManager.getMovieList(params: param, movieType: movieType, success: { (movie) in
+        let url = GlobalConstants.baseUrl + movieType
+        APIManager.getMovieList(params: param, url: url, success: { (movie) in
             self.arrTopRatedMovieList.removeAll()
             self.arrTopRatedMovieList.append(contentsOf: movie.results)
             self.collectionViewTopRatedMovie.reloadData()
@@ -104,7 +105,8 @@ class HomeVC: UIViewController {
             "language": "en-US",
             "page": "1"
         ]
-        APIManager.getMovieList(params: param, movieType: movieType, success: { (movie) in
+        let url = GlobalConstants.baseUrl + movieType
+        APIManager.getMovieList(params: param, url: url, success: { (movie) in
             SVProgressHUD.dismiss()
             self.viewMain.isHidden = false
             self.arrPopularMovieList.removeAll()

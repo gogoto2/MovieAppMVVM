@@ -51,12 +51,12 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eav-wQ-HI5">
-                                    <rect key="frame" x="366" y="14.5" width="38" height="30"/>
+                                    <rect key="frame" x="345" y="14.5" width="59" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="RlU-Qm-tsD"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="More">
+                                    <state key="normal" title="View All">
                                         <color key="titleColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -83,12 +83,12 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5N-mn-2UJ">
-                                    <rect key="frame" x="366" y="323" width="38" height="30"/>
+                                    <rect key="frame" x="345" y="323" width="59" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="miG-h3-ZXa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="More">
+                                    <state key="normal" title="View All">
                                         <color key="titleColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -115,12 +115,12 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhn-dn-gEG">
-                                    <rect key="frame" x="366" y="632" width="38" height="30"/>
+                                    <rect key="frame" x="345" y="632" width="59" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="pFw-bD-kgK"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="More">
+                                    <state key="normal" title="View All">
                                         <color key="titleColor" red="1" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>

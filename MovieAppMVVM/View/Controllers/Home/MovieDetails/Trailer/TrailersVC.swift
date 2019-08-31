@@ -20,23 +20,42 @@ class TrailersVC: UIViewController {
     
     var arrVideos = [TrailerResults]()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(TrailersVC.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.init(hexString: "FF4545")
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableViewTrailer.delegate = self
         self.tableViewTrailer.dataSource = self
         
-        self.setDataForMovieCredits()
+        self.tableViewTrailer.addSubview(self.refreshControl)
+        
+        self.setDataForMovieCredits(isRefresh: false)
     }
     
-    func setDataForMovieCredits() {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.arrVideos.removeAll()
+        self.tableViewTrailer.reloadData()
+        self.setDataForMovieCredits(isRefresh: true)
+        refreshControl.endRefreshing()
+    }
+    
+    func setDataForMovieCredits(isRefresh: Bool) {
         let param = [
             "api_key": GlobalConstants.apiKey
         ]
-        SVProgressHUD.show()
+        if !isRefresh {
+            SVProgressHUD.show()
+        }
         APIManager.getMovieVideos(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (video) in
             SVProgressHUD.dismiss()
-            self.arrVideos.removeAll()
             self.arrVideos.append(contentsOf: video.results)
             self.tableViewTrailer.reloadData()
         }) { (errMsg) in
@@ -46,6 +65,21 @@ class TrailersVC: UIViewController {
 }
 
 extension TrailersVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSections: Int = 0
+        if self.arrVideos.count > 0 {
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No Records"
+            noDataLabel.textColor     = UIColor.lightGray
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+        }
+        return numOfSections
+    }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrVideos.count

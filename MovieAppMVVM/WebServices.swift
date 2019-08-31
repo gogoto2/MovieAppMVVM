@@ -12,9 +12,7 @@ import Alamofire
 class APIManager: NSObject {
     
     // Movie... (Popular, Top_Rated, Upcoming)
-    class func getMovieList(params: [String: String], movieType: String, success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrl + movieType
+    class func getMovieList(params: [String: String], url: String, success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -152,9 +150,7 @@ class APIManager: NSObject {
     }
     
     // Search...
-    class func getSearchedMovieList(params: [String: String], success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrlForSearch
+    class func getSearchedMovieList(url: String, params: [String: String], success: @escaping (_ movie: Movie)->(), failure: @escaping (_ errorMessage: String)->()) {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             

@@ -20,33 +20,43 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1p-1A-goK">
-                        <rect key="frame" x="10" y="0.0" width="26" height="39.5"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                        <rect key="frame" x="20" y="0.0" width="28.5" height="39.5"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-ys-43a">
-                        <rect key="frame" x="275" y="0.0" width="35" height="39.5"/>
-                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="11"/>
+                        <rect key="frame" x="259" y="0.0" width="41" height="39.5"/>
+                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="eke-SX-WfP">
-                        <rect key="frame" x="255" y="12.5" width="15" height="15"/>
+                        <rect key="frame" x="239" y="12.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="5Wk-hP-ZoB"/>
                             <constraint firstAttribute="width" constant="15" id="bGB-ZY-o0a"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygb-jg-3gs">
+                        <rect key="frame" x="20" y="38.5" width="280" height="1"/>
+                        <color key="backgroundColor" red="0.20882649374246573" green="0.21327482018219179" blue="0.22924388186301367" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Z07-VH-wbp"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="x1p-1A-goK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D8T-mN-wm8"/>
+                    <constraint firstItem="x1p-1A-goK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="D8T-mN-wm8"/>
                     <constraint firstAttribute="bottom" secondItem="x1p-1A-goK" secondAttribute="bottom" id="Dqb-z9-eSs"/>
                     <constraint firstItem="gz1-ys-43a" firstAttribute="leading" secondItem="eke-SX-WfP" secondAttribute="trailing" constant="5" id="FxR-0C-GJU"/>
+                    <constraint firstAttribute="bottom" secondItem="Ygb-jg-3gs" secondAttribute="bottom" id="OHU-Ej-eN3"/>
                     <constraint firstAttribute="bottom" secondItem="gz1-ys-43a" secondAttribute="bottom" id="WeA-4x-Bkp"/>
+                    <constraint firstItem="Ygb-jg-3gs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xhm-vX-udp"/>
                     <constraint firstItem="gz1-ys-43a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZzN-IO-4jL"/>
-                    <constraint firstAttribute="trailing" secondItem="gz1-ys-43a" secondAttribute="trailing" constant="10" id="lEE-30-mul"/>
+                    <constraint firstAttribute="trailing" secondItem="gz1-ys-43a" secondAttribute="trailing" constant="20" id="lEE-30-mul"/>
                     <constraint firstItem="eke-SX-WfP" firstAttribute="centerY" secondItem="gz1-ys-43a" secondAttribute="centerY" id="nca-I9-VtS"/>
+                    <constraint firstAttribute="trailing" secondItem="Ygb-jg-3gs" secondAttribute="trailing" constant="20" id="u4M-pn-3iv"/>
                     <constraint firstItem="x1p-1A-goK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vzS-6Q-dKI"/>
                 </constraints>
             </tableViewCellContentView>
@@ -57,7 +67,7 @@
                 <outlet property="lblTitle" destination="x1p-1A-goK" id="c5j-ZJ-3dg"/>
                 <outlet property="lblValue" destination="gz1-ys-43a" id="Iaj-md-irO"/>
             </connections>
-            <point key="canvasLocation" x="50.724637681159422" y="36.830357142857139"/>
+            <point key="canvasLocation" x="50.724637681159422" y="36.160714285714285"/>
         </tableViewCell>
     </objects>
     <resources>

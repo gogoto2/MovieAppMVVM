@@ -15,7 +15,7 @@ class OverviewTVCell: UITableViewCell {
     
     func refreshData(movieDetails: MovieDetails) {
         
-        self.lblOverviewTitle.text = "Overview:"
+        self.lblOverviewTitle.text = "Overview"
         self.lblOverviewValue.text = movieDetails.overview
     }
 }

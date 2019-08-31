@@ -19,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="167" height="209"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOe-nQ-YaJ" customClass="CardView" customModule="AGMoviesApp" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="157" height="199"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOe-nQ-YaJ" customClass="CardView" customModule="MovieAppMVVM" customModuleProvider="target">
+                        <rect key="frame" x="2.5" y="1" width="162" height="207"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-person" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-oO-i4F">
-                                <rect key="frame" x="0.0" y="0.0" width="157" height="156.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="162" height="164.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEd-pN-BkX">
-                                <rect key="frame" x="5" y="181.5" width="147" height="12.5"/>
+                                <rect key="frame" x="5" y="189.5" width="152" height="12.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12.5" id="5iS-wK-Pq1"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origional Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOL-VU-yum">
-                                <rect key="frame" x="5" y="161.5" width="147" height="15"/>
+                                <rect key="frame" x="5" y="169.5" width="152" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="7zM-nu-WYg"/>
                                 </constraints>
@@ -79,10 +79,10 @@
             </view>
             <color key="backgroundColor" red="0.050980392159999999" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="QOe-nQ-YaJ" secondAttribute="bottom" constant="5" id="H7r-Ov-5jl"/>
-                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Sgq-bK-8d6"/>
-                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="drJ-6B-jtk"/>
-                <constraint firstAttribute="trailing" secondItem="QOe-nQ-YaJ" secondAttribute="trailing" constant="5" id="teL-OD-P2a"/>
+                <constraint firstAttribute="bottom" secondItem="QOe-nQ-YaJ" secondAttribute="bottom" constant="1" id="H7r-Ov-5jl"/>
+                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="Sgq-bK-8d6"/>
+                <constraint firstItem="QOe-nQ-YaJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2.5" id="drJ-6B-jtk"/>
+                <constraint firstAttribute="trailing" secondItem="QOe-nQ-YaJ" secondAttribute="trailing" constant="2.5" id="teL-OD-P2a"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="167" height="209"/>
