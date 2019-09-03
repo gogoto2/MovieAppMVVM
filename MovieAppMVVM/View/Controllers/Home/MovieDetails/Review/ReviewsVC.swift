@@ -18,7 +18,7 @@ class ReviewsVC: UIViewController {
         }
     }
     
-    var arrReview = [ReviewResults]()
+    var reviewVM = ReviewViewModel()
     
     var isInProgress = false
     var total = Int()
@@ -36,9 +36,13 @@ class ReviewsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.initialSetUp()
+    }
+    
+    func initialSetUp() {
+        
         self.tableViewReview.delegate = self
         self.tableViewReview.dataSource = self
-        
         self.tableViewReview.addSubview(self.refreshControl)
         
         self.setDataForReview(isRefresh: false)
@@ -46,7 +50,7 @@ class ReviewsVC: UIViewController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.page = 1
-        self.arrReview.removeAll()
+        self.reviewVM.arrReview.removeAll()
         self.tableViewReview.reloadData()
         self.setDataForReview(isRefresh: true)
         refreshControl.endRefreshing()
@@ -58,21 +62,17 @@ class ReviewsVC: UIViewController {
             return
         }
         self.isInProgress = true
-        
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": String(self.page)
-        ]
-        
         if !isRefresh {
             SVProgressHUD.show()
         }
-        APIManager.getReviewList(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (review) in
+        
+        let param = self.reviewVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: String(self.page))
+        let url = GlobalConstants.baseUrl + SharedInstance.sharedInstance.movieId + "/reviews"
+        APIManager.getReviewList(url: url, params: param, success: { (review) in
             SVProgressHUD.dismiss()
             self.isInProgress = false
             self.total = review.totalResults
-            self.arrReview.append(contentsOf: review.results)
+            self.reviewVM.arrReview.append(contentsOf: review.results)
             self.tableViewReview.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -84,7 +84,7 @@ extension ReviewsVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
-        if self.arrReview.count > 0 {
+        if self.reviewVM.arrReview.count > 0 {
             numOfSections            = 1
             tableView.backgroundView = nil
         } else {
@@ -98,15 +98,13 @@ extension ReviewsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrReview.count
+        return self.reviewVM.arrReview.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTVCell", for: indexPath) as! ReviewTVCell
-        
-        cell.refreshData(review: self.arrReview[indexPath.row])
-        
+        cell.refreshData(review: self.reviewVM.arrReview[indexPath.row])
         return cell
     }
     
@@ -132,7 +130,7 @@ extension ReviewsVC {
     }
     
     func loadMoreData(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.arrReview.count {
+        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.reviewVM.arrReview.count {
             self.page += 1
             self.setDataForReview(isRefresh: false)
         }

@@ -32,18 +32,20 @@ class HomeVC: UIViewController {
         }
     }
     
-    var arrUpcomingMovieList = [MovieResults]()
-    var arrTopRatedMovieList = [MovieResults]()
-    var arrPopularMovieList = [MovieResults]()
+    var movieListVM = MovieViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initialSetUp()
+    }
+    
+    func initialSetUp() {
         
         self.navigationItem.title = "Home"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.viewMain.isHidden = true
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(handleAdd))
         
         self.collectionViewUpcomingMovie.delegate = self
         self.collectionViewUpcomingMovie.dataSource = self
@@ -59,16 +61,12 @@ class HomeVC: UIViewController {
     
     func setDataForUpcomingMovies(movieType: String) {
         
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": "1"
-        ]
+        let param = self.movieListVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: "1")
         let url = GlobalConstants.baseUrl + movieType
         SVProgressHUD.show()
         APIManager.getMovieList(params: param, url: url, success: { (movie) in
-            self.arrUpcomingMovieList.removeAll()
-            self.arrUpcomingMovieList.append(contentsOf: movie.results)
+            self.movieListVM.arrUpcomingMovieList.removeAll()
+            self.movieListVM.arrUpcomingMovieList.append(contentsOf: movie.results)
             self.collectionViewUpcomingMovie.reloadData()
             
             self.setDataForTopRatedMovies(movieType: "top_rated")
@@ -80,15 +78,11 @@ class HomeVC: UIViewController {
     
     func setDataForTopRatedMovies(movieType: String) {
         
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": "1"
-        ]
+        let param = self.movieListVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: "1")
         let url = GlobalConstants.baseUrl + movieType
         APIManager.getMovieList(params: param, url: url, success: { (movie) in
-            self.arrTopRatedMovieList.removeAll()
-            self.arrTopRatedMovieList.append(contentsOf: movie.results)
+            self.movieListVM.arrTopRatedMovieList.removeAll()
+            self.movieListVM.arrTopRatedMovieList.append(contentsOf: movie.results)
             self.collectionViewTopRatedMovie.reloadData()
             
             self.setDataForPopularMovies(movieType: "popular")
@@ -100,17 +94,13 @@ class HomeVC: UIViewController {
     
     func setDataForPopularMovies(movieType: String) {
         
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": "1"
-        ]
+        let param = self.movieListVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: "1")
         let url = GlobalConstants.baseUrl + movieType
         APIManager.getMovieList(params: param, url: url, success: { (movie) in
             SVProgressHUD.dismiss()
             self.viewMain.isHidden = false
-            self.arrPopularMovieList.removeAll()
-            self.arrPopularMovieList.append(contentsOf: movie.results)
+            self.movieListVM.arrPopularMovieList.removeAll()
+            self.movieListVM.arrPopularMovieList.append(contentsOf: movie.results)
             self.collectionViewPopularMovie.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -144,11 +134,11 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionViewUpcomingMovie {
-            return self.arrUpcomingMovieList.count
+            return self.movieListVM.arrUpcomingMovieList.count
         } else if collectionView == self.collectionViewTopRatedMovie {
-            return self.arrTopRatedMovieList.count
+            return self.movieListVM.arrTopRatedMovieList.count
         } else if collectionView == self.collectionViewPopularMovie {
-            return self.arrPopularMovieList.count
+            return self.movieListVM.arrPopularMovieList.count
         } else {
             return 0
         }
@@ -162,11 +152,11 @@ extension HomeVC: UICollectionViewDataSource {
         }
         
         if collectionView == self.collectionViewUpcomingMovie {
-            cell.refreshData(movie: self.arrUpcomingMovieList[indexPath.item])
+            cell.refreshData(movie: self.movieListVM.arrUpcomingMovieList[indexPath.item])
         } else if collectionView == self.collectionViewTopRatedMovie {
-            cell.refreshData(movie: self.arrTopRatedMovieList[indexPath.item])
+            cell.refreshData(movie: self.movieListVM.arrTopRatedMovieList[indexPath.item])
         } else if collectionView == self.collectionViewPopularMovie {
-            cell.refreshData(movie: self.arrPopularMovieList[indexPath.item])
+            cell.refreshData(movie: self.movieListVM.arrPopularMovieList[indexPath.item])
         }
         
         return cell
@@ -178,11 +168,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
         if collectionView == self.collectionViewUpcomingMovie {
-            SharedInstance.sharedInstance.movieId = String(self.arrUpcomingMovieList[indexPath.item].id)
+            SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrUpcomingMovieList[indexPath.item].id)
         } else if collectionView == self.collectionViewTopRatedMovie {
-            SharedInstance.sharedInstance.movieId = String(self.arrTopRatedMovieList[indexPath.item].id)
+            SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrTopRatedMovieList[indexPath.item].id)
         } else if collectionView == self.collectionViewPopularMovie {
-            SharedInstance.sharedInstance.movieId = String(self.arrPopularMovieList[indexPath.item].id)
+            SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrPopularMovieList[indexPath.item].id)
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

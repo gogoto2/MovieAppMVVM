@@ -17,7 +17,7 @@ class MovieListVC: UIViewController {
         }
     }
     
-    var arrMovieList = [MovieResults]()
+    var movieListVM = MovieViewModel()
     
     var movieType = ""
     var isInProgress = false
@@ -36,7 +36,7 @@ class MovieListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = self.movieType(value: self.movieType)
+        self.navigationItem.title = self.movieListVM.movieType(value: self.movieType)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.collectionViewMovie.delegate = self
@@ -49,25 +49,10 @@ class MovieListVC: UIViewController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.page = 1
-        self.arrMovieList.removeAll()
+        self.movieListVM.arrMovieList.removeAll()
         self.collectionViewMovie.reloadData()
         self.setDataForMovies(movieType: self.movieType, isRefresh: true)
         refreshControl.endRefreshing()
-    }
-    
-    func movieType(value: String) -> String {
-        var navTitle = ""
-        switch value {
-        case "upcoming":
-            navTitle = "Upcomping Movies"
-        case "top_rated":
-            navTitle = "Top Rated Movies"
-        case "popular":
-            navTitle = "Popular Movies"
-        default:
-            break
-        }
-        return navTitle
     }
     
     func setDataForMovies(movieType: String, isRefresh: Bool) {
@@ -76,12 +61,7 @@ class MovieListVC: UIViewController {
             return
         }
         self.isInProgress = true
-        
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": String(self.page)
-        ]
+        let param = self.movieListVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: String(self.page))
         let url = GlobalConstants.baseUrl + movieType
         if !isRefresh {
             SVProgressHUD.show()
@@ -90,7 +70,7 @@ class MovieListVC: UIViewController {
             SVProgressHUD.dismiss()
             self.isInProgress = false
             self.total = movie.totalResults
-            self.arrMovieList.append(contentsOf: movie.results)
+            self.movieListVM.arrMovieList.append(contentsOf: movie.results)
             self.collectionViewMovie.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -102,7 +82,7 @@ extension MovieListVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         var numOfSections: Int = 0
-        if self.arrMovieList.count > 0 {
+        if self.movieListVM.arrMovieList.count > 0 {
             numOfSections            = 1
             collectionView.backgroundView = nil
         } else {
@@ -116,7 +96,7 @@ extension MovieListVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrMovieList.count
+        return self.movieListVM.arrMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -126,7 +106,7 @@ extension MovieListVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.refreshData(movie: self.arrMovieList[indexPath.item])
+        cell.refreshData(movie: self.movieListVM.arrMovieList[indexPath.item])
         
         return cell
     }
@@ -136,7 +116,7 @@ extension MovieListVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLay
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
-        SharedInstance.sharedInstance.movieId = String(self.arrMovieList[indexPath.item].id)
+        SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrMovieList[indexPath.item].id)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -174,7 +154,7 @@ extension MovieListVC {
     }
     
     func loadMoreData(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.arrMovieList.count {
+        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.movieListVM.arrMovieList.count {
             self.page += 1
             self.setDataForMovies(movieType: self.movieType, isRefresh: false)
         }

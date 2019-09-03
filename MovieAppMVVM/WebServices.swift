@@ -38,9 +38,7 @@ class APIManager: NSObject {
     }
     
     // Movie Details...
-    class func getMovieDetails(params: [String: String], movieId: String, success: @escaping (_ movieDetails: MovieDetails)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrl + movieId
+    class func getMovieDetails(params: [String: String], url: String, success: @escaping (_ movieDetails: MovieDetails)->(), failure: @escaping (_ errorMessage: String)->()) {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -66,10 +64,8 @@ class APIManager: NSObject {
     }
     
     // Review...
-    class func getReviewList(params: [String: String], movieId: String, success: @escaping (_ reviewList: Review)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrl + movieId + "/reviews"
-        
+    class func getReviewList(url: String, params: [String: String], success: @escaping (_ reviewList: Review)->(), failure: @escaping (_ errorMessage: String)->()) {
+                
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
             print(response)
@@ -94,9 +90,7 @@ class APIManager: NSObject {
     }
     
     // Cast...
-    class func getMovieCredits(params: [String: String], movieId: String, success: @escaping (_ credits: Credits)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrl + movieId + "/credits"
+    class func getMovieCredits(params: [String: String], url: String, success: @escaping (_ credits: Credits)->(), failure: @escaping (_ errorMessage: String)->()) {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             
@@ -122,9 +116,7 @@ class APIManager: NSObject {
     }
     
     // Trailers...
-    class func getMovieVideos(params: [String: String], movieId: String, success: @escaping (_ videos: Trailer)->(), failure: @escaping (_ errorMessage: String)->()) {
-        
-        let url = GlobalConstants.baseUrl + movieId + "/videos"
+    class func getMovieVideos(params: [String: String], url: String, success: @escaping (_ videos: Trailer)->(), failure: @escaping (_ errorMessage: String)->()) {
         
         Alamofire.request(url, method: .get, parameters: params).responseJSON { (response) in
             

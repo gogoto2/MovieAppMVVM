@@ -23,9 +23,7 @@ class AboutVC: UIViewController {
         }
     }
     
-    var movieDetails: MovieDetails?
-    
-    var arrCast = [CastResults]()
+    var aboutViewModel = AboutViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +37,13 @@ class AboutVC: UIViewController {
     }
     
     func setDataForMovieDetails() {
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US"
-        ]
+        
+        let param = self.aboutViewModel.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US")
+        let url = GlobalConstants.baseUrl + SharedInstance.sharedInstance.movieId
         SVProgressHUD.show()
-        APIManager.getMovieDetails(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (movieDetails) in
+        APIManager.getMovieDetails(params: param, url: url, success: { (movieDetails) in
             SVProgressHUD.dismiss()
-            self.movieDetails = movieDetails
+            self.aboutViewModel.movieDetails = movieDetails
             self.setDataForMovieCredits()
         }) { (errMsg) in
             print(errMsg)
@@ -54,15 +51,14 @@ class AboutVC: UIViewController {
     }
     
     func setDataForMovieCredits() {
-        let param = [
-            "api_key": GlobalConstants.apiKey
-        ]
         
+        let url = GlobalConstants.baseUrl + SharedInstance.sharedInstance.movieId + "/credits"
+        let param = self.aboutViewModel.getParameters(apiKey: GlobalConstants.apiKey)
         SVProgressHUD.show()
-        APIManager.getMovieCredits(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (credit) in
+        APIManager.getMovieCredits(params: param, url: url, success: { (credit) in
             SVProgressHUD.dismiss()
-            self.arrCast.removeAll()
-            self.arrCast.append(contentsOf: credit.cast)
+            self.aboutViewModel.arrCast.removeAll()
+            self.aboutViewModel.arrCast.append(contentsOf: credit.cast)
             self.tableViewAbout.reloadData()
             self.tableViewAbout.isHidden = false
         }) { (errMsg) in
@@ -99,23 +95,23 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.movieDetails != nil {
+        if self.aboutViewModel.movieDetails != nil {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTVCell", for: indexPath) as! ImageTVCell
-                cell.refreshData(movieDetails: self.movieDetails!)
+                cell.refreshData(movieDetails: self.aboutViewModel.movieDetails!)
                 return cell
             } else if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MovieNameTVCell", for: indexPath) as! MovieNameTVCell
-                cell.refreshData(movieDetails: self.movieDetails!)
+                cell.refreshData(movieDetails: self.aboutViewModel.movieDetails!)
                 return cell
             } else if indexPath.section == 2 {
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndValueTVCell", for: indexPath) as! TitleAndValueTVCell
-                    cell.refreshDataForDate(movieDetails: self.movieDetails!)
+                    cell.refreshDataForDate(movieDetails: self.aboutViewModel.movieDetails!)
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndValueTVCell", for: indexPath) as! TitleAndValueTVCell
-                    cell.refreshDataForRating(movieDetails: self.movieDetails!)
+                    cell.refreshDataForRating(movieDetails: self.aboutViewModel.movieDetails!)
                     return cell
                 }
             } else if indexPath.section == 3 {
@@ -127,7 +123,7 @@ extension AboutVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if indexPath.section == 4 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTVCell", for: indexPath) as! OverviewTVCell
-                cell.refreshData(movieDetails: self.movieDetails!)
+                cell.refreshData(movieDetails: self.aboutViewModel.movieDetails!)
                 return cell
             } else if indexPath.section == 5 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndButtonTVCell", for: indexPath) as! TitleAndButtonTVCell
@@ -191,9 +187,9 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView.tag == 1 {
-            return (self.movieDetails?.genres.count)!
+            return (self.aboutViewModel.movieDetails?.genres.count)!
         } else {
-            return self.arrCast.count
+            return self.aboutViewModel.arrCast.count
         }
     }
     
@@ -204,7 +200,7 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 print("------- Cell cannot be created")
                 return UICollectionViewCell()
             }
-            cell.refreshData(genre: (self.movieDetails?.genres[indexPath.item])!)
+            cell.refreshData(genre: (self.aboutViewModel.movieDetails?.genres[indexPath.item])!)
             return cell
             
         } else {
@@ -212,7 +208,7 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 print("------- Cell cannot be created")
                 return UICollectionViewCell()
             }
-            cell.refreshData(credits: self.arrCast[indexPath.item])
+            cell.refreshData(credits: self.aboutViewModel.arrCast[indexPath.item])
             return cell
         }
     }
@@ -222,7 +218,7 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         if collectionView.tag == 1 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCVCell", for: indexPath) as? GenreCVCell
-            cell!.refreshData(genre: (self.movieDetails?.genres[indexPath.item])!)
+            cell!.refreshData(genre: (self.aboutViewModel.movieDetails?.genres[indexPath.item])!)
             cell!.setNeedsLayout()
             cell!.layoutIfNeeded()
             let size: CGSize = cell!.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
@@ -232,7 +228,7 @@ extension AboutVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             return CGSize(width: 130.0, height: 200.0)
         }
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         CellAnimatorForCV.animate(cell, withDuration: 0.5, animation: .Tilt)
     }

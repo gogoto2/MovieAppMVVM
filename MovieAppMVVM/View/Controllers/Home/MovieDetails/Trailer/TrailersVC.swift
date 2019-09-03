@@ -18,7 +18,7 @@ class TrailersVC: UIViewController {
         }
     }
     
-    var arrVideos = [TrailerResults]()
+    var trailerVM = TrailerViewModel()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -37,26 +37,26 @@ class TrailersVC: UIViewController {
         
         self.tableViewTrailer.addSubview(self.refreshControl)
         
-        self.setDataForMovieCredits(isRefresh: false)
+        self.setDataForTrailer(isRefresh: false)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        self.arrVideos.removeAll()
+        self.trailerVM.arrVideos.removeAll()
         self.tableViewTrailer.reloadData()
-        self.setDataForMovieCredits(isRefresh: true)
+        self.setDataForTrailer(isRefresh: true)
         refreshControl.endRefreshing()
     }
     
-    func setDataForMovieCredits(isRefresh: Bool) {
-        let param = [
-            "api_key": GlobalConstants.apiKey
-        ]
+    func setDataForTrailer(isRefresh: Bool) {
         if !isRefresh {
             SVProgressHUD.show()
         }
-        APIManager.getMovieVideos(params: param, movieId: SharedInstance.sharedInstance.movieId, success: { (video) in
+        let param = self.trailerVM.getParameters(apiKey: GlobalConstants.apiKey)
+        let url = GlobalConstants.baseUrl + SharedInstance.sharedInstance.movieId + "/videos"
+        APIManager.getMovieVideos(params: param, url: url, success: { (video) in
             SVProgressHUD.dismiss()
-            self.arrVideos.append(contentsOf: video.results)
+            self.trailerVM.arrVideos.removeAll()
+            self.trailerVM.arrVideos.append(contentsOf: video.results)
             self.tableViewTrailer.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -68,7 +68,7 @@ extension TrailersVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
-        if self.arrVideos.count > 0 {
+        if self.trailerVM.arrVideos.count > 0 {
             numOfSections            = 1
             tableView.backgroundView = nil
         } else {
@@ -82,13 +82,13 @@ extension TrailersVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrVideos.count
+        return self.trailerVM.arrVideos.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrailerTVCell", for: indexPath) as! TrailerTVCell
-        cell.refreshData(videos: self.arrVideos[indexPath.row])
+        cell.refreshData(videos: self.trailerVM.arrVideos[indexPath.row])
         cell.delegate = self
         return cell
     }
@@ -107,7 +107,7 @@ extension TrailersVC: VideoCellDelegate {
     func openYoutubeVideo(_ sender: TrailerTVCell) {
         
         guard let tappedIndexPath = self.tableViewTrailer.indexPath(for: sender) else { return }
-        let youtubeId = self.arrVideos[tappedIndexPath.item].key
+        let youtubeId = self.trailerVM.arrVideos[tappedIndexPath.item].key
         var youtubeUrl = NSURL(string:"youtube://\(youtubeId)")!
         
         if UIApplication.shared.canOpenURL(youtubeUrl as URL) {
@@ -121,7 +121,7 @@ extension TrailersVC: VideoCellDelegate {
     func shareVideo(_ sender: TrailerTVCell) {
         
         guard let tappedIndexPath = self.tableViewTrailer.indexPath(for: sender) else { return }
-        let key = self.arrVideos[tappedIndexPath.item].key
+        let key = self.trailerVM.arrVideos[tappedIndexPath.item].key
         let videoUrl = NSURL(string:"https://www.youtube.com/watch?v=\(key)")!
         
         let activityVC = UIActivityViewController(activityItems: [videoUrl], applicationActivities: nil)

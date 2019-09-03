@@ -104,6 +104,10 @@
 		4848256C2319C8F700D8E2E9 /* TitleAndButtonTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4848256A2319C8F600D8E2E9 /* TitleAndButtonTVCell.xib */; };
 		4861A57023131DF6000E98D6 /* MovieCVCellTypeTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861A56E23131DF6000E98D6 /* MovieCVCellTypeTwo.swift */; };
 		4861A57123131DF6000E98D6 /* MovieCVCellTypeTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4861A56F23131DF6000E98D6 /* MovieCVCellTypeTwo.xib */; };
+		487B8593231D3EDC003FD11A /* MovieListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B8592231D3EDC003FD11A /* MovieListVM.swift */; };
+		487B8597231E9459003FD11A /* ReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B8596231E9459003FD11A /* ReviewVM.swift */; };
+		487B8599231E96B7003FD11A /* TrailerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B8598231E96B7003FD11A /* TrailerVM.swift */; };
+		487B859B231EB64A003FD11A /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B859A231EB64A003FD11A /* AboutVM.swift */; };
 		5831A9782DAEA668DA7DB90B /* Pods_MovieAppMVVMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E19840EA2DDBD19F4060D7 /* Pods_MovieAppMVVMUITests.framework */; };
 		5CE158E654AE48DB8CE77D2C /* Pods_MovieAppMVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC5295D306107C96C8A7F86 /* Pods_MovieAppMVVMTests.framework */; };
 /* End PBXBuildFile section */
@@ -228,6 +232,10 @@
 		4848256A2319C8F600D8E2E9 /* TitleAndButtonTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleAndButtonTVCell.xib; sourceTree = "<group>"; };
 		4861A56E23131DF6000E98D6 /* MovieCVCellTypeTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCVCellTypeTwo.swift; sourceTree = "<group>"; };
 		4861A56F23131DF6000E98D6 /* MovieCVCellTypeTwo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCVCellTypeTwo.xib; sourceTree = "<group>"; };
+		487B8592231D3EDC003FD11A /* MovieListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVM.swift; sourceTree = "<group>"; };
+		487B8596231E9459003FD11A /* ReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVM.swift; sourceTree = "<group>"; };
+		487B8598231E96B7003FD11A /* TrailerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerVM.swift; sourceTree = "<group>"; };
+		487B859A231EB64A003FD11A /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
 		4F5EF0C678ACFD095AA4E955 /* Pods_MovieAppMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E19840EA2DDBD19F4060D7 /* Pods_MovieAppMVVMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppMVVMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		834D7C5FDFF9B809372C378C /* Pods-MovieAppMVVMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppMVVMTests.release.xcconfig"; path = "Target Support Files/Pods-MovieAppMVVMTests/Pods-MovieAppMVVMTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,13 +275,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0717BA1A2317D49A0094CD8E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		0717BA1F2317E49C0094CD8E /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,7 +380,7 @@
 				4806B06A230DD17E00B393F8 /* Assets.xcassets */,
 				4806B06C230DD17E00B393F8 /* LaunchScreen.storyboard */,
 				4806B06F230DD17E00B393F8 /* Info.plist */,
-				0717BA1A2317D49A0094CD8E /* ViewModel */,
+				487B8591231D3EC2003FD11A /* ViewModel */,
 				4861A56B231313A5000E98D6 /* Model */,
 				483B88A6230F17DF00F1D993 /* View */,
 			);
@@ -558,6 +559,17 @@
 				07C2691B23191AC300B58E78 /* MovieDetails.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		487B8591231D3EC2003FD11A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				487B8592231D3EDC003FD11A /* MovieListVM.swift */,
+				487B8596231E9459003FD11A /* ReviewVM.swift */,
+				487B8598231E96B7003FD11A /* TrailerVM.swift */,
+				487B859A231EB64A003FD11A /* AboutVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -803,6 +815,7 @@
 			files = (
 				4848256B2319C8F600D8E2E9 /* TitleAndButtonTVCell.swift in Sources */,
 				4806B0B1230DD38800B393F8 /* TextToSpeechConverter.swift in Sources */,
+				487B8599231E96B7003FD11A /* TrailerVM.swift in Sources */,
 				4806B0C4230DD38800B393F8 /* TableViewShadow.swift in Sources */,
 				4806B0E0230DD43300B393F8 /* UIColor+Utility.swift in Sources */,
 				0717BA372317F56B0094CD8E /* ReviewTVCell.swift in Sources */,
@@ -812,6 +825,7 @@
 				483B88BB230F447100F1D993 /* FavouriteVC.swift in Sources */,
 				4806B0E3230DD43300B393F8 /* UIViewController+Utility.swift in Sources */,
 				4806B0DD230DD43300B393F8 /* ReachabilityManager.swift in Sources */,
+				487B8593231D3EDC003FD11A /* MovieListVM.swift in Sources */,
 				4848255F2318667800D8E2E9 /* GenreCVCell.swift in Sources */,
 				4806B0BF230DD38800B393F8 /* ButtonViewShadow.swift in Sources */,
 				4806B0DE230DD43300B393F8 /* NSObject+Activity.swift in Sources */,
@@ -819,11 +833,13 @@
 				4806B0E1230DD43300B393F8 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				4806B0AF230DD38800B393F8 /* ImageViewShadow.swift in Sources */,
 				4806B0BA230DD38800B393F8 /* GradientView.swift in Sources */,
+				487B8597231E9459003FD11A /* ReviewVM.swift in Sources */,
 				4806B0B9230DD38800B393F8 /* EnterMobileNumberTextField.swift in Sources */,
 				4848255B2318639800D8E2E9 /* CollectionViewInsideTableViewCell.swift in Sources */,
 				484825632318679700D8E2E9 /* MovieNameTVCell.swift in Sources */,
 				4806B0AE230DD38800B393F8 /* LocationTextFieldVC.swift in Sources */,
 				483B88CB230F454D00F1D993 /* WebServices.swift in Sources */,
+				487B859B231EB64A003FD11A /* AboutVM.swift in Sources */,
 				4806B0B8230DD38800B393F8 /* MyDateFormatConverter.swift in Sources */,
 				4806B0EB230DD64000B393F8 /* HomeVC.swift in Sources */,
 				4848255323185F8000D8E2E9 /* ImageTVCell.swift in Sources */,

@@ -20,7 +20,7 @@ class SearchVC: UIViewController {
         }
     }
     
-    var arrMovieList = [MovieResults]()
+    var movieListVM = MovieViewModel()
     
     var isInProgress = false
     var total = Int()
@@ -52,7 +52,7 @@ class SearchVC: UIViewController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.page = 1
-        self.arrMovieList.removeAll()
+        self.movieListVM.arrMovieList.removeAll()
         self.collectionViewSearch.reloadData()
         self.setDataForSearchMovies(query: self.searchBar.text ?? "", isRefresh: true)
         refreshControl.endRefreshing()
@@ -78,7 +78,7 @@ class SearchVC: UIViewController {
         if self.searchBar.text != "" {
             self.searchBar.endEditing(true)
             self.page = 1
-            self.arrMovieList.removeAll()
+            self.movieListVM.arrMovieList.removeAll()
             self.collectionViewSearch.reloadData()
             self.setDataForSearchMovies(query: self.searchBar.text ?? "", isRefresh: false)
         }
@@ -90,23 +90,17 @@ class SearchVC: UIViewController {
             return
         }
         self.isInProgress = true
-        
-        let param = [
-            "api_key": GlobalConstants.apiKey,
-            "language": "en-US",
-            "page": String(self.page),
-            "query": query,
-            "include_adult": "true"
-        ]
         if !isRefresh {
             SVProgressHUD.show()
         }
+        
         let url = GlobalConstants.baseUrlForSearch
+        let param = self.movieListVM.getParameters(apiKey: GlobalConstants.apiKey, language: "en-US", pageCount: String(self.page), query: self.searchBar.text ?? "", isAdult: "true")
         APIManager.getSearchedMovieList(url: url, params: param, success: { (movie) in
             SVProgressHUD.dismiss()
             self.isInProgress = false
             self.total = movie.totalResults
-            self.arrMovieList.append(contentsOf: movie.results)
+            self.movieListVM.arrMovieList.append(contentsOf: movie.results)
             self.collectionViewSearch.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -118,7 +112,7 @@ extension SearchVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         var numOfSections: Int = 0
-        if self.arrMovieList.count > 0 {
+        if self.movieListVM.arrMovieList.count > 0 {
             numOfSections            = 1
             collectionView.backgroundView = nil
         } else {
@@ -132,7 +126,7 @@ extension SearchVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrMovieList.count
+        return self.movieListVM.arrMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,9 +135,7 @@ extension SearchVC: UICollectionViewDataSource {
             print("------- Cell cannot be created")
             return UICollectionViewCell()
         }
-        
-        cell.refreshData(movie: self.arrMovieList[indexPath.item])
-        
+        cell.refreshData(movie: self.movieListVM.arrMovieList[indexPath.item])
         return cell
     }
 }
@@ -152,7 +144,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
-        SharedInstance.sharedInstance.movieId = String(self.arrMovieList[indexPath.item].id)
+        SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrMovieList[indexPath.item].id)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -183,7 +175,7 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.page = 1
         self.searchBar.text = ""
-        self.arrMovieList.removeAll()
+        self.movieListVM.arrMovieList.removeAll()
         self.collectionViewSearch.reloadData()
     }
     
@@ -191,7 +183,7 @@ extension SearchVC: UISearchBarDelegate {
         if let text = searchBar.text {
             self.searchBar.endEditing(true)
             self.page = 1
-            self.arrMovieList.removeAll()
+            self.movieListVM.arrMovieList.removeAll()
             self.collectionViewSearch.reloadData()
             self.setDataForSearchMovies(query: text, isRefresh: false)
         }
@@ -219,7 +211,7 @@ extension SearchVC {
     }
     
     func loadMoreData(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.arrMovieList.count {
+        if (scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height) && !isInProgress && self.total > self.movieListVM.arrMovieList.count {
             self.page += 1
             self.setDataForSearchMovies(query: self.searchBar.text ?? "", isRefresh: false)
         }
