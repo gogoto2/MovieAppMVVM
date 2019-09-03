@@ -8,7 +8,6 @@ target 'MovieAppMVVM' do
   # Pods for MovieAppMVVM
 
 pod 'Alamofire'
-pod 'SwiftyJSON'
 pod 'SVProgressHUD'
 pod 'SDWebImage', '~> 4.0'
 pod 'XLPagerTabStrip'
