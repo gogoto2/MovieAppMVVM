@@ -19,6 +19,7 @@ class TrailersVC: UIViewController {
     }
     
     var trailerVM = TrailerViewModel()
+    private var dataSource: TableViewDataSource<TrailerTVCell, TrailerResults>!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -32,8 +33,12 @@ class TrailersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dataSource = TableViewDataSource(cellIdentifier: "TrailerTVCell", items: self.trailerVM.arrVideos) { cell, vm in
+            cell.refreshData(videos: vm)
+            cell.delegate = self
+        }
+        self.tableViewTrailer.dataSource = self.dataSource
         self.tableViewTrailer.delegate = self
-        self.tableViewTrailer.dataSource = self
         
         self.tableViewTrailer.addSubview(self.refreshControl)
         
@@ -57,6 +62,7 @@ class TrailersVC: UIViewController {
             SVProgressHUD.dismiss()
             self.trailerVM.arrVideos.removeAll()
             self.trailerVM.arrVideos.append(contentsOf: video.results)
+            self.dataSource.updateItems(self.trailerVM.arrVideos)
             self.tableViewTrailer.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -64,34 +70,7 @@ class TrailersVC: UIViewController {
     }
 }
 
-extension TrailersVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        var numOfSections: Int = 0
-        if self.trailerVM.arrVideos.count > 0 {
-            numOfSections            = 1
-            tableView.backgroundView = nil
-        } else {
-            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "No Records"
-            noDataLabel.textColor     = UIColor.lightGray
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-        }
-        return numOfSections
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.trailerVM.arrVideos.count
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrailerTVCell", for: indexPath) as! TrailerTVCell
-        cell.refreshData(videos: self.trailerVM.arrVideos[indexPath.row])
-        cell.delegate = self
-        return cell
-    }
+extension TrailersVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 190.0
