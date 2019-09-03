@@ -19,6 +19,7 @@ class ReviewsVC: UIViewController {
     }
     
     var reviewVM = ReviewViewModel()
+    private var dataSource: TableViewDataSource<ReviewTVCell, ReviewResults>!
     
     var isInProgress = false
     var total = Int()
@@ -41,8 +42,11 @@ class ReviewsVC: UIViewController {
     
     func initialSetUp() {
         
+        self.dataSource = TableViewDataSource(cellIdentifier: "ReviewTVCell", items: self.reviewVM.arrReview) { cell, vm in
+            cell.refreshData(review: vm)
+        }
+        self.tableViewReview.dataSource = self.dataSource
         self.tableViewReview.delegate = self
-        self.tableViewReview.dataSource = self
         self.tableViewReview.addSubview(self.refreshControl)
         
         self.setDataForReview(isRefresh: false)
@@ -73,6 +77,7 @@ class ReviewsVC: UIViewController {
             self.isInProgress = false
             self.total = review.totalResults
             self.reviewVM.arrReview.append(contentsOf: review.results)
+            self.dataSource.updateItems(self.reviewVM.arrReview)
             self.tableViewReview.reloadData()
         }) { (errMsg) in
             print(errMsg)
@@ -80,33 +85,7 @@ class ReviewsVC: UIViewController {
     }
 }
 
-extension ReviewsVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        var numOfSections: Int = 0
-        if self.reviewVM.arrReview.count > 0 {
-            numOfSections            = 1
-            tableView.backgroundView = nil
-        } else {
-            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "No Records"
-            noDataLabel.textColor     = UIColor.lightGray
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-        }
-        return numOfSections
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.reviewVM.arrReview.count
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTVCell", for: indexPath) as! ReviewTVCell
-        cell.refreshData(review: self.reviewVM.arrReview[indexPath.row])
-        return cell
-    }
+extension ReviewsVC: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         //CellAnimator.animate(cell, withDuration: 0.5, animation: .Tilt)

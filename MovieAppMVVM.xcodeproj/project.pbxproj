@@ -108,6 +108,8 @@
 		487B8597231E9459003FD11A /* ReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B8596231E9459003FD11A /* ReviewVM.swift */; };
 		487B8599231E96B7003FD11A /* TrailerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B8598231E96B7003FD11A /* TrailerVM.swift */; };
 		487B859B231EB64A003FD11A /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B859A231EB64A003FD11A /* AboutVM.swift */; };
+		487B85A0231EF454003FD11A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B859F231EF454003FD11A /* TableViewDataSource.swift */; };
+		487B85A3231EF4CD003FD11A /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B85A2231EF4CD003FD11A /* CollectionViewDataSource.swift */; };
 		5831A9782DAEA668DA7DB90B /* Pods_MovieAppMVVMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E19840EA2DDBD19F4060D7 /* Pods_MovieAppMVVMUITests.framework */; };
 		5CE158E654AE48DB8CE77D2C /* Pods_MovieAppMVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC5295D306107C96C8A7F86 /* Pods_MovieAppMVVMTests.framework */; };
 /* End PBXBuildFile section */
@@ -236,6 +238,8 @@
 		487B8596231E9459003FD11A /* ReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVM.swift; sourceTree = "<group>"; };
 		487B8598231E96B7003FD11A /* TrailerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerVM.swift; sourceTree = "<group>"; };
 		487B859A231EB64A003FD11A /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
+		487B859F231EF454003FD11A /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		487B85A2231EF4CD003FD11A /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		4F5EF0C678ACFD095AA4E955 /* Pods_MovieAppMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E19840EA2DDBD19F4060D7 /* Pods_MovieAppMVVMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppMVVMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		834D7C5FDFF9B809372C378C /* Pods-MovieAppMVVMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppMVVMTests.release.xcconfig"; path = "Target Support Files/Pods-MovieAppMVVMTests/Pods-MovieAppMVVMTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				4806B06A230DD17E00B393F8 /* Assets.xcassets */,
 				4806B06C230DD17E00B393F8 /* LaunchScreen.storyboard */,
 				4806B06F230DD17E00B393F8 /* Info.plist */,
+				487B85A1231EF46F003FD11A /* DataSource */,
 				487B8591231D3EC2003FD11A /* ViewModel */,
 				4861A56B231313A5000E98D6 /* Model */,
 				483B88A6230F17DF00F1D993 /* View */,
@@ -570,6 +575,15 @@
 				487B859A231EB64A003FD11A /* AboutVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		487B85A1231EF46F003FD11A /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				487B859F231EF454003FD11A /* TableViewDataSource.swift */,
+				487B85A2231EF4CD003FD11A /* CollectionViewDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -847,6 +861,7 @@
 				4806B0BB230DD38800B393F8 /* Transition.swift in Sources */,
 				484825672318684C00D8E2E9 /* TitleAndValueTVCell.swift in Sources */,
 				0717BA1D2317E48D0094CD8E /* MovieDetailVC.swift in Sources */,
+				487B85A3231EF4CD003FD11A /* CollectionViewDataSource.swift in Sources */,
 				4806B0E4230DD43300B393F8 /* NSDictionary+Utility.swift in Sources */,
 				4806B0DA230DD43300B393F8 /* SHScrollView.swift in Sources */,
 				4806B0B3230DD38800B393F8 /* ImageTextField.swift in Sources */,
@@ -887,6 +902,7 @@
 				0717BA3E2318045E0094CD8E /* Cast.swift in Sources */,
 				4806B0D9230DD43300B393F8 /* UIDevice+Utility.swift in Sources */,
 				4806B0C2230DD38800B393F8 /* LoadingOverlayLoader.swift in Sources */,
+				487B85A0231EF454003FD11A /* TableViewDataSource.swift in Sources */,
 				483B88CD230F45F800F1D993 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
