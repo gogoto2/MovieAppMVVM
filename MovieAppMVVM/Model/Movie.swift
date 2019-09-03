@@ -38,7 +38,7 @@ struct MovieResults: Codable {
     let backdropPath: String?
     let adult: Bool
     let overview: String
-    let releaseDate: String
+    let releaseDate: String?
     
     enum CodingKeys: String, CodingKey {
         case voteCount = "vote_count"

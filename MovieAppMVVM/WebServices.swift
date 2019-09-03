@@ -19,7 +19,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             
@@ -45,7 +45,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             
@@ -71,7 +71,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             
@@ -97,7 +97,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             
@@ -123,7 +123,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             
@@ -149,7 +149,7 @@ class APIManager: NSObject {
             print(response)
             
             guard response.error == nil else {
-                print("error calliing on \(url)")
+                print("error calling on \(url)")
                 return
             }
             

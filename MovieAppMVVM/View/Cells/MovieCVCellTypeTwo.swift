@@ -22,13 +22,12 @@ class MovieCVCellTypeTwo: UICollectionViewCell {
         
         self.lblMovieName.text = movie.title
         self.lblRating.text = String(movie.voteAverage)
-        if movie.releaseDate != "" {
-            self.lblReleaseDate.text = dateFormatChange(yourdate: movie.releaseDate, currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
+        if movie.releaseDate != nil || movie.releaseDate != "" {
+            self.lblReleaseDate.text = dateFormatChange(yourdate: movie.releaseDate ?? "", currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
         } else {
             self.lblReleaseDate.text = "-"
         }
         self.lblOverview.text = movie.overview
-        
         if movie.posterPath != nil {
             let imgURL = GlobalConstants.poster_image_path + movie.posterPath!
             self.imgMovie.sd_setShowActivityIndicatorView(true)

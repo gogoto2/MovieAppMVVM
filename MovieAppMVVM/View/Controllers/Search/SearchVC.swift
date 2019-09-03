@@ -21,6 +21,7 @@ class SearchVC: UIViewController {
     }
     
     var movieListVM = MovieViewModel()
+    private var dataSource: CollectionViewDataSource<MovieCVCellTypeTwo, MovieResults>!
     
     var isInProgress = false
     var total = Int()
@@ -41,8 +42,11 @@ class SearchVC: UIViewController {
         self.navigationItem.title = "Search Movie"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        self.dataSource = CollectionViewDataSource(cellIdentifier: "MovieCVCellTypeTwo", items: self.movieListVM.arrMovieList) { cell, vm in
+            cell.refreshData(movie: vm)
+        }
+        self.collectionViewSearch.dataSource = self.dataSource
         self.collectionViewSearch.delegate = self
-        self.collectionViewSearch.dataSource = self
         
         self.collectionViewSearch.addSubview(self.refreshControl)
         
@@ -101,42 +105,11 @@ class SearchVC: UIViewController {
             self.isInProgress = false
             self.total = movie.totalResults
             self.movieListVM.arrMovieList.append(contentsOf: movie.results)
+            self.dataSource.updateItems(self.movieListVM.arrMovieList)
             self.collectionViewSearch.reloadData()
         }) { (errMsg) in
             print(errMsg)
         }
-    }
-}
-
-extension SearchVC: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        var numOfSections: Int = 0
-        if self.movieListVM.arrMovieList.count > 0 {
-            numOfSections            = 1
-            collectionView.backgroundView = nil
-        } else {
-            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
-            noDataLabel.text          = "No Records"
-            noDataLabel.textColor     = UIColor.darkGray
-            noDataLabel.textAlignment = .center
-            collectionView.backgroundView  = noDataLabel
-        }
-        return numOfSections
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.movieListVM.arrMovieList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCVCellTypeTwo", for: indexPath) as? MovieCVCellTypeTwo else {
-            print("------- Cell cannot be created")
-            return UICollectionViewCell()
-        }
-        cell.refreshData(movie: self.movieListVM.arrMovieList[indexPath.item])
-        return cell
     }
 }
 
