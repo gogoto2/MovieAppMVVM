@@ -38,6 +38,26 @@ class MovieCVCellTypeTwo: UICollectionViewCell {
         }
     }
     
+    func refreshData(favouriteMovie: Favourite) {
+        
+        self.lblMovieName.text = favouriteMovie.title
+        self.lblRating.text = String(favouriteMovie.voteAverage)
+        if favouriteMovie.releaseDate != nil || favouriteMovie.releaseDate != "" {
+            self.lblReleaseDate.text = dateFormatChange(yourdate: favouriteMovie.releaseDate ?? "", currentFormat: "yyyy-MM-dd", requiredFormat: "dd MMM, yyyy")
+        } else {
+            self.lblReleaseDate.text = "-"
+        }
+        self.lblOverview.text = favouriteMovie.overview
+        if favouriteMovie.posterPath != nil {
+            let imgURL = GlobalConstants.poster_image_path + favouriteMovie.posterPath!
+            self.imgMovie.sd_setShowActivityIndicatorView(true)
+            self.imgMovie.sd_setIndicatorStyle(.gray)
+            self.imgMovie.sd_setImage(with: URL(string: imgURL), placeholderImage: #imageLiteral(resourceName: "cinema"), options:.refreshCached)
+        } else {
+            self.imgMovie.image = #imageLiteral(resourceName: "cinema")
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

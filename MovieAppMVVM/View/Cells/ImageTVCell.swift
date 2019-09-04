@@ -15,7 +15,7 @@ class ImageTVCell: UITableViewCell {
     func refreshData(movieDetails: MovieDetails) {
         
         if movieDetails.posterPath != "" {
-            let imgURL = GlobalConstants.poster_image_path + movieDetails.backdropPath
+            let imgURL = GlobalConstants.poster_image_path + movieDetails.backdropPath!
             self.imgMoviePoster.sd_setShowActivityIndicatorView(true)
             self.imgMoviePoster.sd_setIndicatorStyle(.gray)
             self.imgMoviePoster.sd_setImage(with: URL(string: imgURL), placeholderImage: #imageLiteral(resourceName: "cinema"), options:.refreshCached)

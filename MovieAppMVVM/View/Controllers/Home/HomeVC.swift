@@ -169,10 +169,13 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         let vc = MovieDetailVC(nibName: "MovieDetailVC", bundle: nil)
         if collectionView == self.collectionViewUpcomingMovie {
             SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrUpcomingMovieList[indexPath.item].id)
+            vc.movieResult = self.movieListVM.arrUpcomingMovieList[indexPath.item]
         } else if collectionView == self.collectionViewTopRatedMovie {
             SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrTopRatedMovieList[indexPath.item].id)
+            vc.movieResult = self.movieListVM.arrTopRatedMovieList[indexPath.item]
         } else if collectionView == self.collectionViewPopularMovie {
             SharedInstance.sharedInstance.movieId = String(self.movieListVM.arrPopularMovieList[indexPath.item].id)
+            vc.movieResult = self.movieListVM.arrPopularMovieList[indexPath.item]
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

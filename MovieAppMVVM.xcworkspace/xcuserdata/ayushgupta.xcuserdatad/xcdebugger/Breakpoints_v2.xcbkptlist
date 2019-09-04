@@ -2,4 +2,102 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+            timestampString = "589298554.941524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "setDataForMovieDetails()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieAppMVVM.AboutVC.setDataForMovieDetails() -&gt; ()"
+                  moduleName = "MovieAppMVVM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ayushgupta/Documents/GitHubProjects/MovieAppMVVM/MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+                  timestampString = "589298554.953436"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "426">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MovieAppMVVM.MovieDetails) -&gt; () in MovieAppMVVM.AboutVC.setDataForMovieDetails() -&gt; ()"
+                  moduleName = "MovieAppMVVM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ayushgupta/Documents/GitHubProjects/MovieAppMVVM/MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+                  timestampString = "589298554.958838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "926">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+            timestampString = "589298554.9420511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "setDataForMovieCredits()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieAppMVVM.AboutVC.setDataForMovieCredits() -&gt; ()"
+                  moduleName = "MovieAppMVVM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ayushgupta/Documents/GitHubProjects/MovieAppMVVM/MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+                  timestampString = "589298555.011512"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MovieAppMVVM.Credits) -&gt; () in MovieAppMVVM.AboutVC.setDataForMovieCredits() -&gt; ()"
+                  moduleName = "MovieAppMVVM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ayushgupta/Documents/GitHubProjects/MovieAppMVVM/MovieAppMVVM/View/Controllers/Home/MovieDetails/About/AboutVC.swift"
+                  timestampString = "589298555.015089"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "122">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

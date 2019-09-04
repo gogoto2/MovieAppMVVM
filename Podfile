@@ -11,6 +11,7 @@ pod 'Alamofire'
 pod 'SVProgressHUD'
 pod 'SDWebImage', '~> 4.0'
 pod 'XLPagerTabStrip'
+pod 'NotificationBannerSwift'
 
   target 'MovieAppMVVMTests' do
     inherit! :search_paths

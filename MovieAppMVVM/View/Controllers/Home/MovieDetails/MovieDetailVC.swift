@@ -8,8 +8,11 @@
 
 import UIKit
 import XLPagerTabStrip
+import NotificationBannerSwift
 
 class MovieDetailVC: ButtonBarPagerTabStripViewController {
+    
+    var movieResult: MovieResults?
     
     override func viewDidLoad() {
         // change selected bar color
@@ -31,13 +34,40 @@ class MovieDetailVC: ButtonBarPagerTabStripViewController {
         
         self.navigationItem.title = "Movie Details"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite"), style: .plain, target: self, action: #selector(handleFavourite))
+        
+        if self.isFavouriteMovie(id: Int(SharedInstance.sharedInstance.movieId) ?? 0) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite-white"), style: .plain, target: self, action: #selector(handleFavourite))
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite"), style: .plain, target: self, action: #selector(handleFavourite))
+        }
         
         super.viewDidLoad()
     }
     
+    func isFavouriteMovie(id: Int) -> Bool {
+        let arrMovie = CoreDataManager.shared.fetchFavouriteMovies()
+        var value = false
+        for each in arrMovie {
+            if each.id == id {
+                value = true
+                break
+            }
+            value = false
+        }
+        return value
+    }
+    
     @objc func handleFavourite() {
         
+        if self.isFavouriteMovie(id: Int(SharedInstance.sharedInstance.movieId) ?? 0) {
+            CoreDataManager.shared.deleteMovie(id: Int64(SharedInstance.sharedInstance.movieId) ?? 0)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite"), style: .plain, target: self, action: #selector(handleFavourite))
+            NotificationBanner(title: "Success!", subtitle: "This movie is removed from your favourite list.", style: .success).show()
+        } else {
+            CoreDataManager.shared.addFavouriteMovies(voteCount: self.movieResult!.voteCount, id: self.movieResult!.id, video: self.movieResult!.video, voteAverage: self.movieResult!.voteAverage, title: self.movieResult!.title, popularity: self.movieResult!.popularity, posterPath: (self.movieResult?.posterPath)!, originalLanguage: self.movieResult!.originalLanguage, originalTitle: self.movieResult!.originalTitle, backdropPath: (self.movieResult?.backdropPath)!, adult: self.movieResult!.adult, overview: self.movieResult!.overview, releaseDate: (self.movieResult?.releaseDate)!)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite-white"), style: .plain, target: self, action: #selector(handleFavourite))
+            NotificationBanner(title: "Success!", subtitle: "This movie is added to your favourite list.", style: .success).show()
+        }
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
