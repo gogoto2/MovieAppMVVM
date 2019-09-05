@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let isRefresh = Notification.Name("isRefresh")
+}
+
 class FavouriteVC: UIViewController {
     
     @IBOutlet weak var collectionViewFavourite: UICollectionView! {
@@ -22,6 +26,8 @@ class FavouriteVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .isRefresh, object: nil)
+        
         self.navigationItem.title = "Favourite Movie"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
@@ -31,6 +37,14 @@ class FavouriteVC: UIViewController {
         self.collectionViewFavourite.dataSource = self.dataSource
         self.collectionViewFavourite.delegate = self
         
+        self.setData()
+    }
+    
+    @objc func refresh(notification: Notification) {
+        self.setData()
+    }
+    
+    func setData() {
         self.favouriteVM.arrFavouriteMovie.removeAll()
         self.favouriteVM.arrFavouriteMovie = CoreDataManager.shared.fetchFavouriteMovies()
         self.dataSource.updateItems(self.favouriteVM.arrFavouriteMovie)

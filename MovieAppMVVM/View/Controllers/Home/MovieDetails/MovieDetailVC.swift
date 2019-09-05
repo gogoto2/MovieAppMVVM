@@ -68,6 +68,7 @@ class MovieDetailVC: ButtonBarPagerTabStripViewController {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favourite-white"), style: .plain, target: self, action: #selector(handleFavourite))
             NotificationBanner(title: "Success!", subtitle: "This movie is added to your favourite list.", style: .success).show()
         }
+        NotificationCenter.default.post(name: .isRefresh, object: nil)
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
